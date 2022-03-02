@@ -51,6 +51,7 @@ function SignupPage(props) {
         Username:
         <input 
           type="text"
+          required={true}
           name="username"
           value={username}
           onChange={handleUsername}
@@ -61,6 +62,7 @@ function SignupPage(props) {
         Password:
         <input 
           type="password"
+          required={true}
           name="password"
           value={password}
           onChange={handlePassword}

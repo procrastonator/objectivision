@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import "./CreateProject.css"
+import { AuthContext } from "../context/auth.context"
 
 export default function CreateProject(props) {
 
@@ -10,16 +11,23 @@ export default function CreateProject(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  const { getToken } = useContext(AuthContext)
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    
 
     const projectDetails ={
         title: title,
         description: description
     };
-    axios.post(`${process.env.REACT_APP_API_URL}/projects`, projectDetails)
+
+    const storedToken = getToken();
+    
+    axios.post(
+      `${process.env.REACT_APP_API_URL}/projects`,
+     projectDetails,
+     { headers: { Authorization: `Bearer ${storedToken}` } }
+     )
     .then( response => {
       props.updateProjects();
       navigate("/projects");

@@ -4,7 +4,7 @@ import { AuthContext } from "../context/auth.context"
 
 export default function Header () {
 
-const {isLoggedIn, user} = useContext(AuthContext);
+const {isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
     <div>
@@ -17,6 +17,11 @@ const {isLoggedIn, user} = useContext(AuthContext);
             <>
         <NavLink to="/projects">Projects</NavLink> |
         <NavLink to="/projects/create">New Project</NavLink> 
+
+            &nbsp;
+            <button onClick={logOutUser}>Logout</button>
+            &nbsp;
+            <span>{user && user.username}</span>
         </>
         }
         { !isLoggedIn &&
