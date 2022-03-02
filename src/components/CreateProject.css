@@ -1,0 +1,9 @@
+.CreateProject label {
+    display: block;
+    margin: 1rem auto;
+}
+
+.CreateProject input, .CreateProject textarea{
+    display: block;
+    margin: 0.5rem auto;
+}
