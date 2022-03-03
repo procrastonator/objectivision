@@ -34,11 +34,11 @@ export default function ProjectDetails() {
     <h2>{projectDetails.title}</h2>
     <p>{projectDetails.description}</p>
     
-    <Link to={`/projects/newGoal/${projectId}`}>
+    <Link to={`/projects/${projectId}/goal/new`}>
     <button>Add New Goal</button>
     </Link>
 
-    <Link to={`/projects/edit/${projectId}`}>
+    <Link to={`/projects/${projectId}/edit`}>
     <button>Edit Project or Delete</button>
     </Link>
 

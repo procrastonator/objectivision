@@ -54,11 +54,11 @@ function App() {
         </IsPrivate>
         } />
         <Route path='/projects/:projectId' element={<ProjectDetails />} />
-        <Route path='/projects/newGoal/:projectId' element={<CreateGoal />} />
+        <Route path='/projects/:projectId/goal' element={<CreateGoal />} />
 
         <Route path="/projects/create" element={ <CreateProject updateProjects={fetchProjects} />} />
        
-        <Route path="/projects/edit/:projectId" element={ 
+        <Route path="/projects/:projectId/edit" element={ 
           <IsPrivate>
         <EditProject updateProjects={fetchProjects} /> 
         </IsPrivate>

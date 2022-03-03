@@ -15,7 +15,7 @@ export default function EditProject(props) {
 
   useEffect(() => {                                 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/projects/edit/${projectId}`)
+      .get(`${process.env.REACT_APP_API_URL}/projects/${projectId}/edit`)
       .then((response) => {
         /* 
           We update the state with the project data coming from the response.
