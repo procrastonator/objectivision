@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom';
+import CreateGoal from './CreateGoal';
 
 
 export default function EditProject(props) {
@@ -12,7 +13,7 @@ export default function EditProject(props) {
   const { projectId } = useParams();      
   const navigate = useNavigate();  
 
-  useEffect(() => {                                  // <== ADD
+  useEffect(() => {                                 
     axios
       .get(`${process.env.REACT_APP_API_URL}/projects/edit/${projectId}`)
       .then((response) => {
