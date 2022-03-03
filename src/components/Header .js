@@ -5,6 +5,8 @@ import { AuthContext } from "../context/auth.context"
 export default function Header () {
 
 const {isLoggedIn, user, logOutUser } = useContext(AuthContext);
+console.log(user)
+
 
   return (
     <div>

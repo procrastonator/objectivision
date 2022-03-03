@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"
 
 function LoginPage(props) {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -12,14 +12,14 @@ function LoginPage(props) {
 
     const { storeToken, authenticateUser } = useContext(AuthContext)
 
-  const handleUsername = (e) => setUsername(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
   const handleLoginSubmit = (e) => { 
     e.preventDefault();
 
     const userDetails = {
-      username,
+      email,
       password
     }
     axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, userDetails)
@@ -43,13 +43,13 @@ function LoginPage(props) {
 
       <form onSubmit={handleLoginSubmit}>
         <label>
-          Username:
+          Email:
           <input
             type="text"
             required={true}
-            name="username"
-            value={username}
-            onChange={handleUsername}
+            name="email"
+            value={email}
+            onChange={handleEmail}
           />
         </label>
 
