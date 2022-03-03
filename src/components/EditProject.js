@@ -47,8 +47,7 @@ export default function EditProject(props) {
     axios
       .delete(`${process.env.REACT_APP_API_URL}/projects/${projectId}`)
       .then(() => {
-        // Once the delete request is resolved successfully
-        // navigate back to the list of projects.
+        props.updateProjects();
         navigate("/projects");
       })
       .catch((err) => console.log(err));
