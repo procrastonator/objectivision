@@ -36,8 +36,8 @@ export default function ProjectDetails() {
     <button>New task</button>
     </Link>
 
-    <Link to={`/projects/edit${Id}`}>
-    <button>Edit Project</button>
+    <Link to={`/projects/edit/${Id}`}>
+    <button>Edit Project and Delete</button>
     </Link>
 
    

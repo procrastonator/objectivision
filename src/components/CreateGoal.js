@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-export default function CreateTask(props) {
+export default function CreateGoal(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
  
