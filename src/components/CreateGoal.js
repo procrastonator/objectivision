@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import { AuthContext } from "../context/auth.context"
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 // import { useNavigate } from 'react-router';
 
 
@@ -10,7 +10,7 @@ export default function CreateGoal(props) {
   const { projectId } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
- 
+
   const { getToken } = useContext(AuthContext)
   // const navigate = useNavigate();
 
@@ -19,9 +19,10 @@ export default function CreateGoal(props) {
     e.preventDefault();
   // Create an object representing the body of the POST request
   const requestBody = { title, description, projectId };
+  console.log(requestBody)
  
     axios
-      .post(`${process.env.REACT_APP_API_URL}/goals`, requestBody)
+      .post(`${process.env.REACT_APP_API_URL}/goals/`, requestBody)
       .then((response) => {
         // Reset the state to clear the inputs
         console.log(response)
@@ -29,8 +30,7 @@ export default function CreateGoal(props) {
         setDescription("");
       
         // Invoke the callback function coming through the props
-        // from the ProjectDetailsPage, to refresh the project details
-        props.refreshProject();
+        // props.refreshProject();
       })
       .catch((error) => console.log(error));
   };
