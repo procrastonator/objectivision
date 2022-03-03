@@ -37,7 +37,7 @@ export default function ProjectDetails() {
     </Link>
 
     <Link to={`/projects/edit/${Id}`}>
-    <button>Edit Project and Delete</button>
+    <button>Edit Project or Delete</button>
     </Link>
 
    
