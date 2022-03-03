@@ -13,7 +13,7 @@ export default function EditProject(props) {
   const { projectId } = useParams();      
   const navigate = useNavigate();  
 
-  useEffect(() => {                                  // <== ADD
+  useEffect(() => {                                 
     axios
       .get(`${process.env.REACT_APP_API_URL}/projects/edit/${projectId}`)
       .then((response) => {

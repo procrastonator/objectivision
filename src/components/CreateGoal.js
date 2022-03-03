@@ -1,18 +1,45 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
+import { AuthContext } from "../context/auth.context"
+import { useParams } from 'react-router';
+// import { useNavigate } from 'react-router';
 
 
 export default function CreateGoal(props) {
+
+  const { projectId } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
  
+  const { getToken } = useContext(AuthContext)
+  // const navigate = useNavigate();
+
   
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  // Create an object representing the body of the POST request
+  const requestBody = { title, description, projectId };
  
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/goals`, requestBody)
+      .then((response) => {
+        // Reset the state to clear the inputs
+        console.log(response)
+        setTitle("");
+        setDescription("");
+      
+        // Invoke the callback function coming through the props
+        // from the ProjectDetailsPage, to refresh the project details
+        props.refreshProject();
+      })
+      .catch((error) => console.log(error));
+  };
   
   return (
     <div className="AddGoal">
-      <h3>Add New Task</h3>
+      <h3>Add New Goal</h3>
+
+      <h2> No this works</h2>
       
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
@@ -36,4 +63,3 @@ export default function CreateGoal(props) {
     </div>
   );
 }
- 

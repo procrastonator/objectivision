@@ -6,7 +6,7 @@ import { AuthContext } from '../context/auth.context';
 
 export default function ProjectDetails() {
 
-  const { Id } = useParams();
+  const { projectId } = useParams();
   const [projectDetails, setProjectDetails] = useState({undefined})
 
   const { getToken } = useContext(AuthContext)
@@ -16,7 +16,7 @@ export default function ProjectDetails() {
   useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/projects/${Id}`,
+        `${process.env.REACT_APP_API_URL}/projects/${projectId}`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
         )
       .then((result) => {
@@ -24,7 +24,9 @@ export default function ProjectDetails() {
         setProjectDetails(result.data);
       })
       .catch();
-  }, [Id]);
+  }, [projectId]);
+
+  
 
   return (
     <div className='ProjectDetails'>
@@ -32,11 +34,11 @@ export default function ProjectDetails() {
     <h2>{projectDetails.title}</h2>
     <p>{projectDetails.description}</p>
     
-    <Link to={`/projects/${projectDetails._id}/new-task`}>
-    <button>New Goal</button>
+    <Link to={`/projects/newGoal/${projectId}`}>
+    <button>Add New Goal</button>
     </Link>
 
-    <Link to={`/projects/edit/${Id}`}>
+    <Link to={`/projects/edit/${projectId}`}>
     <button>Edit Project or Delete</button>
     </Link>
 

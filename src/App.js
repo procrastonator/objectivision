@@ -13,6 +13,7 @@ import LoginPage from './components/LoginPage';
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
 import { AuthContext} from "./context/auth.context"
+import CreateGoal from './components/CreateGoal';
 
 function App() {
 
@@ -52,7 +53,9 @@ function App() {
         <ProjectsList  projectData={project} /> 
         </IsPrivate>
         } />
-        <Route path='/projects/:Id' element={<ProjectDetails />} />
+        <Route path='/projects/:projectId' element={<ProjectDetails />} />
+        <Route path='/projects/newGoal/:projectId' element={<CreateGoal />} />
+
         <Route path="/projects/create" element={ <CreateProject updateProjects={fetchProjects} />} />
        
         <Route path="/projects/edit/:projectId" element={ 
@@ -60,6 +63,7 @@ function App() {
         <EditProject updateProjects={fetchProjects} /> 
         </IsPrivate>
         } /> 
+
 
         <Route path="/signup" element={
            <IsAnon>
