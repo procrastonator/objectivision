@@ -33,7 +33,7 @@ export default function ProjectDetails() {
     <p>{projectDetails.description}</p>
     
     <Link to={`/projects/${projectDetails._id}/new-task`}>
-    <button>New task</button>
+    <button>New Goal</button>
     </Link>
 
     <Link to={`/projects/edit/${Id}`}>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 
 
 export default function CreateGoal(props) {
@@ -10,7 +11,7 @@ export default function CreateGoal(props) {
  
   
   return (
-    <div className="AddTask">
+    <div className="AddGoal">
       <h3>Add New Task</h3>
       
       <form onSubmit={handleSubmit}>
@@ -30,7 +31,7 @@ export default function CreateGoal(props) {
           onChange={(e) => setDescription(e.target.value)}
         />
  
-        <button type="submit">Add Task</button>
+        <button type="submit">Add Goal</button>
       </form>
     </div>
   );
