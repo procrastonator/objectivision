@@ -6,6 +6,7 @@ import axios from "axios";
 
 function SignupPage(props) {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -13,6 +14,7 @@ function SignupPage(props) {
   const navigate = useNavigate();
   
   const handleUsername = (e) => setUsername(e.target.value);
+  const handelEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
   
@@ -21,6 +23,7 @@ function SignupPage(props) {
 
       const userDetails = {
         username,
+        email,
         password
       }
 
@@ -55,6 +58,17 @@ function SignupPage(props) {
           name="username"
           value={username}
           onChange={handleUsername}
+        />
+        </label>
+
+        <label>
+        Email:
+        <input 
+          type="text"
+          required={true}
+          name="email"
+          value={email}
+          onChange={handelEmail}
         />
         </label>
 
