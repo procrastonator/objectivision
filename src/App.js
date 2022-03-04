@@ -14,6 +14,7 @@ import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
 import { AuthContext} from "./context/auth.context"
 import CreateGoal from './components/CreateGoal';
+import UpdateGoal from './components/UpdateGoal';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
       })
       .catch(e => console.log("error getting list of projects...", e));
   }
+
   
 
 
@@ -58,6 +60,8 @@ function App() {
         } />
         <Route path='/projects/:projectId' element={<ProjectDetails />} />
         <Route path='/projects/:projectId/goal' element={<CreateGoal />} />
+        {/* <Route path='/projects/:projectId/updateGoal/:goalId' element = {<UpdateGoal />} /> */}
+        <Route path='/projects/:goalId/update' element = {<UpdateGoal />} />
 
         <Route path="/projects/create" element={ <CreateProject updateProjects={fetchProjects} />} />
        
