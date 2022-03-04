@@ -16,6 +16,7 @@ export default function ProjectsList(props) {
         <br />
         <section className='project-summary' >
         <Link to={`/projects/${element._id}`}>{element.title}</Link>
+        <p>{element.goals.length}</p>
         
         </section>
         <hr />

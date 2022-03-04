@@ -40,7 +40,14 @@ export default function ProjectDetails() {
     <h4>description</h4>
     <p>{projectDetails.description}</p>
 
-    
+    <Link to={`/projects/${projectId}/goal`}>
+    <button>Add New Goal</button>
+    </Link>
+
+    <Link to={`/projects/${projectId}/edit`}>
+    <button>Edit Project or Delete</button>
+    </Link>
+
 
     { projectDetails._id ===  undefined ?
      <h1>Loading....</h1> :
@@ -62,14 +69,7 @@ export default function ProjectDetails() {
    
   
     
-    <Link to={`/projects/${projectId}/goal`}>
-    <button>Add New Goal</button>
-    </Link>
-
-    <Link to={`/projects/${projectId}/edit`}>
-    <button>Edit Project or Delete</button>
-    </Link>
-
+    
    
     
     </div>
