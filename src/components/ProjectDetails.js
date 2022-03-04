@@ -59,10 +59,10 @@ export default function ProjectDetails() {
         <p>Goals:</p>
         <p> {element.title}</p>
         <p> {element.description}</p>
-        
-        <Link to={`/projects/${projectId}/updateGoal`}>
-     <button>update Goal</button>
+        <Link to={`/projects/${element._id}/update`}>
+        <button>update Goal</button>
         </Link>
+
         </div>
         )
     })   }
