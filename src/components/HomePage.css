@@ -1,0 +1,14 @@
+.HomepageBackground{
+background-image: url("./assets/front\ page\ image.jpeg");
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+margin-left: 40px;
+margin-right: 40px;
+height: 700px;
+
+}
+
+.center{
+ padding: 200px;
+}
