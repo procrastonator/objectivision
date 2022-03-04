@@ -31,6 +31,10 @@ export default function HomePage() {
     <br />
     <h2> adding many future buttons</h2>
     <br />
+    <button><NavLink to="/projects">Projects</NavLink> </button>
+    <br /> 
+    <br /> 
+    <button> <NavLink to="/projects/create">New Project</NavLink> </button>
     </>
     }
     </div>
