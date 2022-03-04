@@ -5,10 +5,6 @@ import { AuthContext } from '../context/auth.context';
 
 
 export default function ProjectDetails() {
-
-  
- 
-
   const { projectId } = useParams();
   const [projectDetails, setProjectDetails] = useState({undefined})
 
