@@ -39,7 +39,6 @@ export default function CreateGoal(props) {
     <div className="AddGoal">
       <h3>Add New Goal</h3>
 
-      <h2> No this works</h2>
       
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
