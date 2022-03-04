@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router';
+
 import {  useParams } from 'react-router-dom';
 
  
@@ -8,13 +10,14 @@ import {  useParams } from 'react-router-dom';
 // send the object with the new goal information to the backend
 // use this object in your server side code to update the goal
 
-export default function UpdateGoal() {
+export default function UpdateGoal(props) {
 
     const { goalId } = useParams(); 
     
-   
+    // const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+   
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,6 +27,10 @@ export default function UpdateGoal() {
         axios.put(
             `${process.env.REACT_APP_API_URL}/goals/${goalId}/update`, goalDetails)
             .then((response) => {
+              // props.updateProjects();
+              // navigate(`/projects`)
+            
+              
               });
     }
 

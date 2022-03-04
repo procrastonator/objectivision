@@ -59,9 +59,9 @@ function App() {
         </IsPrivate>
         } />
         <Route path='/projects/:projectId' element={<ProjectDetails />} />
-        <Route path='/projects/:projectId/goal' element={<CreateGoal />} />
+        <Route path='/projects/:projectId/goal' element={<CreateGoal updateProjects={fetchProjects}/>} />
         {/* <Route path='/projects/:projectId/updateGoal/:goalId' element = {<UpdateGoal />} /> */}
-        <Route path='/projects/:goalId/update' element = {<UpdateGoal />} />
+        <Route path='/projects/:goalId/update' element = {<UpdateGoal updateProjects={fetchProjects} />} />
 
         <Route path="/projects/create" element={ <CreateProject updateProjects={fetchProjects} />} />
        

@@ -2,10 +2,6 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom';
-<<<<<<< HEAD
-=======
-
->>>>>>> fcc8b216462adf774c27468c12a95d8df186db28
 
 
 export default function EditProject(props) {

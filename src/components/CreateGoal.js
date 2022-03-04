@@ -14,7 +14,7 @@ export default function CreateGoal(props) {
   const navigate = useNavigate();
 
   const { getToken } = useContext(AuthContext)
-  // const navigate = useNavigate();
+  
 
   
   const handleSubmit = (e) => {
@@ -30,8 +30,8 @@ export default function CreateGoal(props) {
         console.log(response)
         setTitle("");
         setDescription("");
-        navigate("/projects");
         props.updateProjects();
+        navigate("/projects");
         
       })
       .catch((error) => console.log(error));
