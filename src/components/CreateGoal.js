@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import { AuthContext } from "../context/auth.context"
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 // import { useNavigate } from 'react-router';
 
 
@@ -10,6 +11,7 @@ export default function CreateGoal(props) {
   const { projectId } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const navigate = useNavigate();
 
   const { getToken } = useContext(AuthContext)
   // const navigate = useNavigate();
@@ -28,9 +30,9 @@ export default function CreateGoal(props) {
         console.log(response)
         setTitle("");
         setDescription("");
-      
-        // Invoke the callback function coming through the props
-        // props.refreshProject();
+        navigate("/projects");
+        props.updateProjects();
+        
       })
       .catch((error) => console.log(error));
   };
