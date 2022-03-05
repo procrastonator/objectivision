@@ -57,6 +57,7 @@ export default function ProjectDetails() {
         {console.log(projectDetails)}
         <hr />
         <p>Goals:</p>
+        <div></div>
         <p> {element.title}</p>
         <p> {element.description}</p>
         <Link to={`/projects/${element._id}/update`}>
