@@ -1,0 +1,8 @@
+.UpdateGoal.inProgress{
+    background-color: #f50e0e;
+}
+
+.UpdateGoal.finished {
+    background-color: aquamarine;
+
+}

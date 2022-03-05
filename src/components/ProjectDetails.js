@@ -2,13 +2,14 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
+import { GoalContext } from '../context/finishedGoal.context';
+import "./ProjectDetails.css"
 
 
 export default function ProjectDetails() {
 
-  
- 
-
+  const { status, toggleStatus } =useContext(GoalContext) 
+  console.log(status);
   const { projectId } = useParams();
   const [projectDetails, setProjectDetails] = useState({undefined})
 
@@ -56,13 +57,20 @@ export default function ProjectDetails() {
         <div key={element._id}>
         {console.log(projectDetails)}
         <hr />
+
         <p>Goals:</p>
-        <div></div>
+        <div className={`UpdateGoal ${status}`}>
         <p> {element.title}</p>
         <p> {element.description}</p>
+        </div>
         <Link to={`/projects/${element._id}/update`}>
         <button>update Goal</button>
         </Link>
+        <button onClick={toggleStatus}>
+        {status === "inProgress" ? "Finished" : "In Progress"}
+
+        </button>
+    
 
         </div>
         )
