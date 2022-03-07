@@ -2,21 +2,31 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
-import { GoalContext } from '../context/finishedGoal.context';
+// import { GoalContext } from '../context/finishedGoal.context';
 import "./ProjectDetails.css"
 
 
 export default function ProjectDetails() {
 
-  const { status, toggleStatus } =useContext(GoalContext) 
-  console.log(status);
+  // const { status, toggleStatus } = useContext(GoalContext) 
+
   const { projectId } = useParams();
   const [projectDetails, setProjectDetails] = useState({undefined})
-
-
   const { getToken } = useContext(AuthContext)
-
   const storedToken = getToken();
+
+  const [isDoneArr, setIsDoneArr] = useState([]);
+  const [inProgress, setInProgress] = useState([]);
+
+  // const checkProgressStatus = () => {
+  //   if (result.data.goals.isDone === "true") {
+      
+  //   }
+  // }   
+
+  // we need to figure out that the user see a colu with in progress goals and and is done colum.
+  // we would write a functon that will do a if statment that: 
+  
 
   useEffect(() => {
     axios
@@ -25,11 +35,26 @@ export default function ProjectDetails() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
         )
       .then((result) => {
-        console.log(result.data)
-        setProjectDetails(result.data);
+        // console.log(result.data)
+        setProjectDetails(result.data)
+        console.log(isDoneArr)
+        console.log(inProgress)
+        for ( let i = 0 ; i < result.data.goals.length; i++){
+          // console.log(typeof result.data.goals[i].isDone)
+        if (result.data.goals[i].isDone === true) {
+          setIsDoneArr(isDoneArr.push(result.data.goals[i]))
+        } else {
+          setInProgress(inProgress.push(result.data.goals[i]))
+        }
+      }
+
       })
       .catch();
   }, [projectId]);
+
+  
+
+  
 
 
 
@@ -55,17 +80,18 @@ export default function ProjectDetails() {
      projectDetails.goals.map((element, index) => {
       return (
         <div key={element._id}>
-        {console.log(projectDetails)}
+        {/* {console.log(projectDetails)} */}
         <hr />
 
         <p>Goals:</p>
-        <div className={`UpdateGoal ${status}`}>
+        <div >
+        {/* <div className={`UpdateGoal ${status}`}> */}
         <p> {element.title}</p>
         <p> {element.description}</p>
-        <button onClick={toggleStatus}>
+        {/* <button onClick={toggleStatus}> No text
         {status === "inProgress" ? "Finished" : "Not finsihed"}
       
-        </button>
+        </button> */}
         </div>
   
         <Link to={`/projects/${element._id}/update`}>
