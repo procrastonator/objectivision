@@ -35,10 +35,10 @@ export default function ProjectDetails() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
         )
       .then((result) => {
-        // console.log(result.data)
+        console.log(result.data)
         setProjectDetails(result.data)
-        console.log(isDoneArr)
-        console.log(inProgress)
+        // console.log(isDoneArr)
+        // console.log(inProgress)
         for ( let i = 0 ; i < result.data.goals.length; i++){
           // console.log(typeof result.data.goals[i].isDone)
         if (result.data.goals[i].isDone === true) {
