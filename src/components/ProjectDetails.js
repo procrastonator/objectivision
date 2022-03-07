@@ -29,22 +29,41 @@ export default function ProjectDetails() {
 
         setProjectDetails(result.data)
 
-        console.log(inProgress)
-       
+        console.log(result)
        
        let newfilter = result.data.goals
        let newDoneArr = newfilter.filter(element => element.isDone === true )
        setIsDoneArr(newDoneArr)
-
-
  
        let newInProgressArr = newfilter.filter(element => element.isDone === false )
        setInProgress(newInProgressArr)
 
-        console.log(newDoneArr)
+        
       })
       .catch();
   }, []);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const id = e.target.id;
+    const goalDetails ={isDone};
+
+
+    axios.put(
+      `${process.env.REACT_APP_API_URL}/goals/${id}/update`, goalDetails)
+      .then((response) => {
+        console.log(response);
+        props.updateProjects();
+        
+      
+        
+        });
+}
+    
+  
+    
+
+  }
 
 
   return (
@@ -90,7 +109,12 @@ export default function ProjectDetails() {
         <div >
         <p> {element.title}</p>
         <p> {element.description}</p>
-    
+        <a href="{element.link}">Project link</a>
+
+        
+
+
+        <button id={element._id} onClick={handleSubmit}> cheak </button>
        
         </div>
   
