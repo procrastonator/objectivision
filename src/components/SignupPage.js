@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../context/auth.context"
 
 
 
@@ -8,6 +9,8 @@ function SignupPage(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -29,8 +32,11 @@ function SignupPage(props) {
 
      
     axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, userDetails)
-    .then( () => {
-      navigate("/login");
+    .then( (response) => {
+      storeToken (response.data.authToken);
+      authenticateUser();
+     //   console.log(response);
+    navigate("/");
     })
     .catch( error => {
       const msg = error.response.data.errorMessage;

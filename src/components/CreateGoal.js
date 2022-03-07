@@ -11,6 +11,8 @@ export default function CreateGoal(props) {
   const { projectId } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
+
   const navigate = useNavigate();
 
   const { getToken } = useContext(AuthContext)
@@ -30,6 +32,7 @@ export default function CreateGoal(props) {
         console.log(response)
         setTitle("");
         setDescription("");
+        setLink("")
         props.updateProjects();
         navigate("/projects");
         
@@ -55,6 +58,14 @@ export default function CreateGoal(props) {
         <textarea
           type="text"
           name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+
+        <label>Link:</label>
+        <textarea
+          type="text"
+          name="link"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />

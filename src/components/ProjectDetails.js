@@ -62,15 +62,16 @@ export default function ProjectDetails() {
         <div className={`UpdateGoal ${status}`}>
         <p> {element.title}</p>
         <p> {element.description}</p>
+        <button onClick={toggleStatus}>
+        {status === "inProgress" ? "Finished" : "Not finsihed"}
+      
+        </button>
         </div>
+  
         <Link to={`/projects/${element._id}/update`}>
         <button>update Goal</button>
         </Link>
-        <button onClick={toggleStatus}>
-        {status === "inProgress" ? "Finished" : "In Progress"}
-
-        </button>
-    
+        
 
         </div>
         )
