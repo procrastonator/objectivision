@@ -17,7 +17,15 @@ export default function ProjectDetails(props) {
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
 
-  const [isDone, setIsDone] = useState(true);
+ // const [isDone, setIsDone] = useState();
+
+  // the lack of a boolean is actuly a immeteriadthing 
+
+  //it just 0 and 1 
+
+  // if true = if value === 1
+
+  // a third value like 2
   
 
 
@@ -47,27 +55,32 @@ export default function ProjectDetails(props) {
   function handleSubmit(e) {
     e.preventDefault();
     const id = e.target.id;
-    const goalDetails ={isDone};
-
+    //setIsDone(true)
+    // const goalDetails = true // True
+    console.log("WE CLICKED 'DONE'");
     axios.put(
-      `${process.env.REACT_APP_API_URL}/goals/${id}/update`, goalDetails)
+      `${process.env.REACT_APP_API_URL}/goals/${id}/update`, {isDone:true})
       .then((response) => {
-        console.log(response.data.isDone)
-        setIsDone(true)
+        
+        console.log(response.data.isDone);
         props.updateProjects();
 
-    })};
+    }).catch((error) => {
+      console.log("Oops, we fucked up.");
+      console.log(error);
+    });};
 
     function handleSubmitNotDONE(e) {
       e.preventDefault();
       const id = e.target.id;
-      const goalDetails ={isDone};
+      //setIsDone(false)
+      // const goalDetails = false;
+      console.log("We Clicked Not Done")
   
       axios.put(
-        `${process.env.REACT_APP_API_URL}/goals/${id}/update`, goalDetails)
+        `${process.env.REACT_APP_API_URL}/goals/${id}/update`, {isDone:false}) // <- {} is your body!
         .then((response) => {
           console.log(response.data.isDone)
-          setIsDone(false)
           props.updateProjects();
   
       })};
@@ -107,7 +120,6 @@ export default function ProjectDetails(props) {
               I think I am not done
             </button>
 
-
           </div>
         )
       })}
@@ -122,8 +134,6 @@ export default function ProjectDetails(props) {
             <div >
               <p> {element.title}</p>
               <p> {element.description}</p>
-
-
             </div>
 
             <Link to={`/projects/${element._id}/update`}>
