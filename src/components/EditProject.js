@@ -8,25 +8,10 @@ export default function EditProject(props) {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
+      console.log(title, description)
   const { projectId } = useParams();      
   const navigate = useNavigate();  
 
-  useEffect(() => {                                 
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/projects/${projectId}/edit`)
-      .then((response) => {
-        /* 
-          We update the state with the project data coming from the response.
-          This way we set inputs to show the actual title and description of the project
-        */
-        const oneProject = response.data;
-        setTitle(oneProject.title);
-        setDescription(oneProject.description);
-      })
-      .catch((error) => console.log(error));
-    
-  }, [projectId]);
 
   const handleFormSubmit = (e) => {                   
     e.preventDefault();

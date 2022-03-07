@@ -40,7 +40,7 @@ function App() {
       .catch(e => console.log("error getting list of projects...", e));
   }
 
-  
+
 
 
 
@@ -63,7 +63,7 @@ function App() {
         {/* <Route path='/projects/:projectId/updateGoal/:goalId' element = {<UpdateGoal />} /> */}
         <Route path='/projects/:goalId/update' element = {<UpdateGoal updateProjects={fetchProjects} />} />
 
-        <Route path="/projects/create" element={ <CreateProject updateProjects={fetchProjects} />} />
+        <Route path="/projects/create" element={ <CreateProject updateProjects={fetchProjects}  />} />
        
         <Route path="/projects/:projectId/edit" element={ 
           <IsPrivate>

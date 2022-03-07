@@ -1,7 +1,6 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-
 import {  useParams } from 'react-router-dom';
 
  
@@ -13,17 +12,32 @@ import {  useParams } from 'react-router-dom';
 export default function UpdateGoal(props) {
 
     const { goalId } = useParams(); 
-    
+    console.log(goalId)
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     
    
+    
+    useEffect(() => {                                 
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/goals/${goalId}`)
+        .then((response) => {
+         console.log(response.data)
+          setTitle(response.data.title);
+          setDescription(response.data.description);
+        })
+        .catch((error) => console.log(error));
+      
+    }, [goalId]);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
     
         const goalDetails ={title,description};
+
+
 
         axios.put(
             `${process.env.REACT_APP_API_URL}/goals/${goalId}/update`, goalDetails)
