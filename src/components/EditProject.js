@@ -16,10 +16,7 @@ export default function EditProject(props) {
     axios
       .get(`${process.env.REACT_APP_API_URL}/projects/${projectId}`)
       .then((response) => {
-        /* 
-          We update the state with the project data coming from the response.
-          This way we set inputs to show the actual title and description of the project
-        */
+      
         const oneProject = response.data;
         setTitle(oneProject.title);
         setDescription(oneProject.description);
