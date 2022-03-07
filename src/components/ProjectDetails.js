@@ -17,7 +17,8 @@ export default function ProjectDetails(props) {
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
 
-  const [isDone, setIsDone] = useState(false);
+  const [isDone, setIsDone] = useState(true);
+  const [stateInProgress, setStateInProgress] = useState(false);
 
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function ProjectDetails(props) {
     const id = e.target.id;
     const goalDetails ={isDone};
 
+  
     axios.put(
       `${process.env.REACT_APP_API_URL}/goals/${id}/update`, goalDetails)
       .then((response) => {
@@ -57,7 +59,22 @@ export default function ProjectDetails(props) {
         setIsDone(true)
         props.updateProjects();
 
-    })};
+    })}
+
+    function handleSubmitProgress(e) {
+      e.preventDefault();
+      const id = e.target.id;
+      const goalDetails = {isDone};
+  
+      axios.put(
+        `${process.env.REACT_APP_API_URL}/goals/${id}/update`, goalDetails)
+        .then((response) => {
+          console.log(response.data.isDone)
+          setStateInProgress(false)
+          props.updateProjects();
+  
+      })};
+  
 
     
   
@@ -90,7 +107,9 @@ export default function ProjectDetails(props) {
               <p> {element.title}</p>
               <p> {element.description}</p>
             </div>
-
+            <button id= {element._id} onClick={handleSubmit}>
+              In Progress
+            </button>
           </div>
         )
       })}
@@ -114,8 +133,8 @@ export default function ProjectDetails(props) {
             </Link>
 
 
-            <button id= {element._id} onClick={handleSubmit}>
-              NAME
+            <button id= {element._id} onClick={handleSubmitProgress}>
+              Done
             </button>
 
           </div>
