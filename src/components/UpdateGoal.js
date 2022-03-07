@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {  useParams } from 'react-router-dom';
 
@@ -17,19 +17,20 @@ export default function UpdateGoal(props) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     
-   
-    
     useEffect(() => {                                 
-      axios
-        .get(`${process.env.REACT_APP_API_URL}/goals/${goalId}`)
-        .then((response) => {
-         console.log(response.data)
-          setTitle(response.data.title);
-          setDescription(response.data.description);
-        })
-        .catch((error) => console.log(error));
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/goals/${goalId}`)
+      .then((response) => {
       
-    }, [goalId]);
+    
+      })
+      .catch((error) => console.log(error));
+    
+  }, []);
+
+
+    
+    
 
 
     const handleSubmit = (e) => {
@@ -57,6 +58,8 @@ export default function UpdateGoal(props) {
         <h1>Update Goal</h1>
   
          <form onSubmit={handleSubmit}>
+
+         
   
           <label>
             Title:
