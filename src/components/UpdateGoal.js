@@ -26,7 +26,7 @@ export default function UpdateGoal(props) {
       })
       .catch((error) => console.log(error));
     
-  }, []);
+  },[goalId]);
 
 
     

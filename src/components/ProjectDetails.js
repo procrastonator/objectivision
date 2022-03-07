@@ -18,6 +18,7 @@ export default function ProjectDetails() {
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
 
+
   // const checkProgressStatus = () => {
   //   if (result.data.goals.isDone === "true") {
       
@@ -35,16 +36,14 @@ export default function ProjectDetails() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
         )
       .then((result) => {
-        console.log(result.data)
         setProjectDetails(result.data)
-        // console.log(isDoneArr)
-        // console.log(inProgress)
         for ( let i = 0 ; i < result.data.goals.length; i++){
-          // console.log(typeof result.data.goals[i].isDone)
         if (result.data.goals[i].isDone === true) {
           setIsDoneArr(isDoneArr.push(result.data.goals[i]))
+          console.log(isDoneArr)
         } else {
           setInProgress(inProgress.push(result.data.goals[i]))
+          console.log(inProgress)
         }
       }
 
@@ -75,23 +74,19 @@ export default function ProjectDetails() {
     </Link>
 
 
-    { projectDetails._id ===  undefined ?
+    { isDoneArr._id ===  undefined ?
      <h1>Loading....</h1> :
-     projectDetails.goals.map((element, index) => {
+     isDoneArr.map((element, index) => {
       return (
         <div key={element._id}>
-        {/* {console.log(projectDetails)} */}
         <hr />
 
         <p>Goals:</p>
         <div >
-        {/* <div className={`UpdateGoal ${status}`}> */}
         <p> {element.title}</p>
         <p> {element.description}</p>
-        {/* <button onClick={toggleStatus}> No text
-        {status === "inProgress" ? "Finished" : "Not finsihed"}
+
       
-        </button> */}
         </div>
   
         <Link to={`/projects/${element._id}/update`}>
