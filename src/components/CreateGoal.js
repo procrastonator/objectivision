@@ -22,7 +22,7 @@ export default function CreateGoal(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
   // Create an object representing the body of the POST request
-  const requestBody = { title, description, projectId };
+  const requestBody = { title, description,link, projectId };
   console.log(requestBody)
  
     axios
@@ -66,8 +66,8 @@ export default function CreateGoal(props) {
         <textarea
           type="text"
           name="link"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
         />
  
         <button type="submit">Add Goal</button>

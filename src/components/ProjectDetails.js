@@ -18,7 +18,7 @@ export default function ProjectDetails(props) {
   const [inProgress, setInProgress] = useState([]);
 
   const [isDone, setIsDone] = useState(true);
-  const [stateInProgress, setStateInProgress] = useState(false);
+  
 
 
   useEffect(() => {
@@ -36,8 +36,6 @@ export default function ProjectDetails(props) {
         let newfilter = result.data.goals
         let newDoneArr = newfilter.filter(element => element.isDone === true)
         setIsDoneArr(newDoneArr)
-
-
 
         let newInProgressArr = newfilter.filter(element => element.isDone === false)
         setInProgress(newInProgressArr)
@@ -76,6 +74,20 @@ export default function ProjectDetails(props) {
       })};
   
 
+    function handleSubmitNotDONE(e) {
+      e.preventDefault();
+      const id = e.target.id;
+      const goalDetails ={isDone};
+  
+      axios.put(
+        `${process.env.REACT_APP_API_URL}/goals/${id}/update`, goalDetails)
+        .then((response) => {
+          console.log(response.data.isDone)
+          setIsDone(false)
+          props.updateProjects();
+  
+      })};
+
     
   
 
@@ -107,9 +119,11 @@ export default function ProjectDetails(props) {
               <p> {element.title}</p>
               <p> {element.description}</p>
             </div>
-            <button id= {element._id} onClick={handleSubmit}>
-              In Progress
+            <button id= {element._id} onClick={handleSubmitNotDONE}>
+              I think I am not done
             </button>
+
+
           </div>
         )
       })}
@@ -133,7 +147,7 @@ export default function ProjectDetails(props) {
             </Link>
 
 
-            <button id= {element._id} onClick={handleSubmitProgress}>
+            <button id= {element._id} onClick={handleSubmit}>
               Done
             </button>
 
