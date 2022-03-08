@@ -17,18 +17,6 @@ export default function ProjectDetails(props) {
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
 
- // const [isDone, setIsDone] = useState();
-
-  // the lack of a boolean is actuly a immeteriadthing 
-
-  //it just 0 and 1 
-
-  // if true = if value === 1
-
-  // a third value like 2
-  
-
-
   useEffect(() => {
 
     axios
@@ -73,8 +61,6 @@ export default function ProjectDetails(props) {
     function handleSubmitNotDONE(e) {
       e.preventDefault();
       const id = e.target.id;
-      //setIsDone(false)
-      // const goalDetails = false;
       console.log("We Clicked Not Done")
   
       axios.put(
