@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"
 
+
 export default function Header () {
 
 const {isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -14,30 +15,49 @@ const {isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   <div class="container-fluid">
 
-    <a class="navbar-brand" href="#">Navbar</a>
+   <NavLink className="navbar-brand" to="/">
+     Home (future house logo)
+     </NavLink>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+   
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
+       
+         { isLoggedIn &&
+            <>
+        <NavLink className="nav-link active" aria-current="page" to="/projects">Projects</NavLink> 
+        <NavLink className="nav-link active" aria-current="page" to="/projects/create">New Project</NavLink> 
+
+            &nbsp;
+            <button onClick={logOutUser}>Logout</button>
+        
+        </>
+        } 
+
+        { isLoggedIn &&
+            <>
+            &nbsp;
+            <span>{user && user.username}</span>
+            </>
+        }
+
+
+        
+        { !isLoggedIn &&
+            <>
+            <NavLink className="nav-link active" aria-current="page" to="/signup">Register</NavLink> 
+            <NavLink className="nav-link active" aria-current="page" to="/login">Login</NavLink>  
+            </>
+        }
+
        
       </ul>
     </div>
   </div>
 </nav>
 
-    <div className="Header">
+    {/* <div className="Header">
     
         <NavLink to="/">Home</NavLink> |
 
@@ -59,7 +79,7 @@ const {isLoggedIn, user, logOutUser } = useContext(AuthContext);
             </>
         }
 
-    </div>
+    </div> */}
 
 
     </>   

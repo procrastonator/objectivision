@@ -25,11 +25,13 @@ export default function HomePage() {
     }
     { isLoggedIn &&
     <>
-    <h2> adding many future buttons</h2>
-    <br />
-    <h2> adding many future buttons</h2>
-    <br />
-    <h2> adding many future buttons</h2>
+
+           
+            <div>
+            Welkome <br />
+            {user && user.username}
+            </div>
+      
     <br />
     <button><NavLink to="/projects">Projects</NavLink> </button>
     <br /> 
