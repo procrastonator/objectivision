@@ -68,7 +68,7 @@ export default function ProjectDetails(props) {
         `${process.env.REACT_APP_API_URL}/goals/${id}/update`, goalDetails)
         .then((response) => {
           console.log(response.data.isDone)
-          setStateInProgress(false)
+          setInProgress(false)
           props.updateProjects();
   
       })};
