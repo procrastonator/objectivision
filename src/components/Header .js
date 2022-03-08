@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"
+import house from "./assets/house.png"
 
 
 export default function Header () {
@@ -10,13 +11,17 @@ const {isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
 
   return (
-    <>
+    < div className="background">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
   <div class="container-fluid">
 
    <NavLink className="navbar-brand" to="/">
-     Home (future house logo)
+   <div>
+   <img src= {house} alt=" " width="39" height="35"/>
+      <div>Home</div>
+   </div>
+   
      </NavLink>
 
    
@@ -82,7 +87,7 @@ const {isLoggedIn, user, logOutUser } = useContext(AuthContext);
     </div> */}
 
 
-    </>   
+    </div>   
     
   )
 }
