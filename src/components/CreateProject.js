@@ -10,6 +10,7 @@ export default function CreateProject(props) {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
 
   const { getToken } = useContext(AuthContext)
 
@@ -41,6 +42,16 @@ export default function CreateProject(props) {
       <h1>Create a new project</h1>
 
       <form onSubmit={handleSubmit}>
+
+      <label>
+          Picture: (add url)
+          <textarea
+            type="text"
+            name="image"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </label>
 
         <label>
           Title:

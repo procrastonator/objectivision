@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
 import "./ProjectDetails.css"
+import noImage from "./assets/no-image.png"
 
 
 export default function ProjectDetails(props) {
@@ -25,6 +26,8 @@ export default function ProjectDetails(props) {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((result) => {
+
+        console.log(result.data)
 
         setProjectDetails(result.data)
 
@@ -50,7 +53,7 @@ export default function ProjectDetails(props) {
       `${process.env.REACT_APP_API_URL}/goals/${id}/update`, {isDone:true})
       .then((response) => {
         
-        console.log(response.data.isDone);
+        // console.log(response.data.isDone);
         props.updateProjects();
 
     }).catch((error) => {
@@ -66,7 +69,7 @@ export default function ProjectDetails(props) {
       axios.put(
         `${process.env.REACT_APP_API_URL}/goals/${id}/update`, {isDone:false}) // <- {} is your body!
         .then((response) => {
-          console.log(response.data.isDone)
+          // console.log(response.data.isDone)
           props.updateProjects();
   
       })};
@@ -79,6 +82,7 @@ export default function ProjectDetails(props) {
 
 
       <h2>{projectDetails.title}</h2>
+      <img src={noImage} alt="noImage" width="100" height="100"></img>
       <h4>description</h4>
       <p>{projectDetails.description}</p>
 
@@ -101,6 +105,7 @@ export default function ProjectDetails(props) {
             <div >
               <p> {element.title}</p>
               <p> {element.description}</p>
+              
             </div>
             <button id= {element._id} onClick={handleSubmitNotDONE}>
               I think I am not done
@@ -120,6 +125,7 @@ export default function ProjectDetails(props) {
             <div >
               <p> {element.title}</p>
               <p> {element.description}</p>
+              <a href={element.link} target="{_blank}"> Link yet to be named</a>
             </div>
 
             <Link to={`/projects/${element._id}/update`}>
