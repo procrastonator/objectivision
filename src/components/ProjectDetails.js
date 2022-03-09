@@ -4,12 +4,13 @@ import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
 import "./ProjectDetails.css"
 import noImage from "./assets/no-image.png"
+import { useNavigate } from 'react-router-dom';
 
 
 export default function ProjectDetails(props) {
 
 
-
+  const navigate = useNavigate();
   const { projectId } = useParams();
   const [projectDetails, setProjectDetails] = useState({ undefined })
   const { getToken } = useContext(AuthContext)
@@ -25,21 +26,21 @@ export default function ProjectDetails(props) {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((result) => {
-
-        console.log(result.data)
-
+        // console.log(result.data)
         setProjectDetails(result.data)
 
         let newfilter = result.data.goals
         let newDoneArr = newfilter.filter(element => element.isDone === true)
-        setIsDoneArr(newDoneArr)
 
+        setIsDoneArr(newDoneArr)
         let newInProgressArr = newfilter.filter(element => element.isDone === false)
         setInProgress(newInProgressArr)
 
       })
       .catch();
-  }, []);
+  }, [isDoneArr]);
+
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -55,7 +56,9 @@ export default function ProjectDetails(props) {
       .then((response) => {
         
         // console.log(response.data.isDone);
-        props.updateProjects();
+        // props.updateProjects();
+        // navigate(`/projects`);
+       
 
     }).catch((error) => {
       console.log("Oops, we fucked up.");
@@ -73,9 +76,9 @@ export default function ProjectDetails(props) {
         { headers: { Authorization: `Bearer ${storedToken}` } }
         )
         .then((response) => {
-          // console.log(response.data.isDone)
-          props.updateProjects();
-  
+          console.log("get Somthing", response)
+          // props.updateProjects();
+          // navigate(`/projects`);
       })};
 
     
