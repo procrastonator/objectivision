@@ -23,7 +23,7 @@ function App() {
   const { getToken, user } = useContext(AuthContext);
 
   const fetchProjects = () => {
-    const storedToken =getToken();
+    const storedToken = getToken();
 
     axios.get(
       `${process.env.REACT_APP_API_URL}/projects`,
