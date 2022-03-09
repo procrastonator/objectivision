@@ -132,7 +132,14 @@ export default function ProjectDetails(props) {
             <div >
               <p> {element.title}</p>
               <p> {element.description}</p>
-              <a href={element.link} target="{_blank}"> Link yet to be named</a>
+
+             
+
+              <a href={element.link} target="{_blank}">{element.link}   </a>
+              
+
+           
+              
             </div>
 
             <Link to={`/projects/${element._id}/update`}>
