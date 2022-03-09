@@ -54,21 +54,41 @@ function App() {
         <Route path="/" element={ <HomePage /> } />
 
         <Route path="/projects" element={ 
-        <IsPrivate>
+      <IsPrivate>
         <ProjectsList  projectData={project} /> 
-        </IsPrivate>
+      </IsPrivate>
         } />
-        <Route path='/projects/:projectId' element={<ProjectDetails updateProjects={fetchProjects}/>} />
-        <Route path='/projects/:projectId/goal' element={<CreateGoal updateProjects={fetchProjects}/>} />
-        {/* <Route path='/projects/:projectId/updateGoal/:goalId' element = {<UpdateGoal />} /> */}
-        <Route path='/projects/:goalId/update' element = {<UpdateGoal updateProjects={fetchProjects} />} />
+        
+        <Route path='/projects/:projectId' element={
+      <IsPrivate>
+        <ProjectDetails updateProjects={fetchProjects}/>
+      </IsPrivate>
+        } />
 
-        <Route path="/projects/create" element={ <CreateProject updateProjects={fetchProjects}  />} />
+        
+        <Route path='/projects/:projectId/goal' element={
+      <IsPrivate>
+        <CreateGoal updateProjects={fetchProjects}/>
+      </IsPrivate>
+        }  />
+       
+       
+        <Route path='/projects/:goalId/update' element = {
+      <IsPrivate>
+        <UpdateGoal updateProjects={fetchProjects} />
+      </IsPrivate>
+        } />
+
+        <Route path="/projects/create" element={ 
+      <IsPrivate>
+        <CreateProject updateProjects={fetchProjects}  />
+      </IsPrivate>
+        } />
        
         <Route path="/projects/:projectId/edit" element={ 
-          <IsPrivate>
+      <IsPrivate>
         <EditProject updateProjects={fetchProjects} /> 
-        </IsPrivate>
+      </IsPrivate>
         } /> 
 
 

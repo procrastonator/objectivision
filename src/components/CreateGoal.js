@@ -12,11 +12,9 @@ export default function CreateGoal(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
+  const { getToken } = useContext(AuthContext)
 
   const navigate = useNavigate();
-
-  const { getToken } = useContext(AuthContext)
-  
 
   
   const handleSubmit = (e) => {
@@ -25,8 +23,11 @@ export default function CreateGoal(props) {
   const requestBody = { title, description,link, projectId };
   console.log(requestBody)
  
+  const storedToken = getToken();
     axios
-      .post(`${process.env.REACT_APP_API_URL}/goals/`, requestBody)
+      .post(`${process.env.REACT_APP_API_URL}/goals/`, requestBody,
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
       .then((response) => {
         // Reset the state to clear the inputs
         console.log(response)

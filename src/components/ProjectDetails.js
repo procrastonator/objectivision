@@ -14,12 +14,11 @@ export default function ProjectDetails(props) {
   const [projectDetails, setProjectDetails] = useState({ undefined })
   const { getToken } = useContext(AuthContext)
   const storedToken = getToken();
-
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
+  
 
   useEffect(() => {
-
     axios
       .get(
         `${process.env.REACT_APP_API_URL}/projects/${projectId}`,
@@ -50,7 +49,10 @@ export default function ProjectDetails(props) {
     // const goalDetails = true // True
     console.log("WE CLICKED 'DONE'");
     axios.put(
-      `${process.env.REACT_APP_API_URL}/goals/${id}/update`, {isDone:true})
+      `${process.env.REACT_APP_API_URL}/goals/${id}/update`, 
+      {isDone:true},
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
       .then((response) => {
         
         // console.log(response.data.isDone);
@@ -67,7 +69,10 @@ export default function ProjectDetails(props) {
       console.log("We Clicked Not Done")
   
       axios.put(
-        `${process.env.REACT_APP_API_URL}/goals/${id}/update`, {isDone:false}) // <- {} is your body!
+        `${process.env.REACT_APP_API_URL}/goals/${id}/update`, 
+        {isDone:false},
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
         .then((response) => {
           // console.log(response.data.isDone)
           props.updateProjects();

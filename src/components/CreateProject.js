@@ -3,23 +3,26 @@ import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import "./CreateProject.css"
 import { AuthContext } from "../context/auth.context"
+import { useParams } from "react-router";
 
 export default function CreateProject(props) {
 
   const navigate = useNavigate();
-
+  const { userId } = useParams();
+  const { getToken } = useContext(AuthContext)
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
 
-  const { getToken } = useContext(AuthContext)
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const projectDetails ={
         title: title,
-        description: description
+        description: description,
+        image: image,
+        userId: userId,
     };
 
     const storedToken = getToken();
