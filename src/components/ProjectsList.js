@@ -5,6 +5,8 @@ export default function ProjectsList(props) {
 
   const {projectData} = props
 
+  // console.log(props)
+
   return (
     <div>
     

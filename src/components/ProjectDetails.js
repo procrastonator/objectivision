@@ -16,7 +16,7 @@ export default function ProjectDetails(props) {
   const storedToken = getToken();
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
-  
+
 
   useEffect(() => {
     axios
@@ -29,7 +29,6 @@ export default function ProjectDetails(props) {
         console.log(result.data)
 
         setProjectDetails(result.data)
-
 
         let newfilter = result.data.goals
         let newDoneArr = newfilter.filter(element => element.isDone === true)

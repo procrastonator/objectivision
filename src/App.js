@@ -18,14 +18,9 @@ import UpdateGoal from './components/UpdateGoal';
 
 function App() {
 
-  const [project, setProject] = useState([])
-
-  const { isLoggedIn, getToken } = useContext(AuthContext);
-
-  useEffect( () => {
-    fetchProjects();
-  }, [isLoggedIn]);
-
+  const [projects, setProjects] = useState([]);
+  const [ userProjects, setUserProjects] = useState([]);
+  const { getToken, user } = useContext(AuthContext);
 
   const fetchProjects = () => {
     const storedToken =getToken();
@@ -35,27 +30,33 @@ function App() {
       { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then(response => {
-        setProject(response.data);
+        setProjects(response.data);
       })
       .catch(e => console.log("error getting list of projects...", e));
   }
 
+  useEffect( () => {
+    fetchProjects();
+  }, []);
 
-
+  useEffect( () => {
+    if (user && projects.length){
+      const userfilter = projects.filter(e => e.userId === user._id);
+      setUserProjects(userfilter) 
+    }
+  }, [user, projects]);
 
 
   return (
     <div className="App">
 
     <Header />
-
-
       <Routes>      
         <Route path="/" element={ <HomePage /> } />
 
         <Route path="/projects" element={ 
       <IsPrivate>
-        <ProjectsList  projectData={project} /> 
+        <ProjectsList  projectData={userProjects} /> 
       </IsPrivate>
         } />
         
@@ -65,7 +66,6 @@ function App() {
       </IsPrivate>
         } />
 
-        
         <Route path='/projects/:projectId/goal' element={
       <IsPrivate>
         <CreateGoal updateProjects={fetchProjects}/>
@@ -91,7 +91,6 @@ function App() {
       </IsPrivate>
         } /> 
 
-
         <Route path="/signup" element={
            <IsAnon>
            <SignupPage />
@@ -103,13 +102,7 @@ function App() {
         </IsAnon> 
         } />
 
-
-
-
       </Routes>
-      
-
-
     </div>
   );
 }
