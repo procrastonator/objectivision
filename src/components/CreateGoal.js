@@ -62,14 +62,15 @@ export default function CreateGoal(props) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-
-        <label>Link:</label>
+        <p>Add your url Link here</p>
+        <label> Link:</label>
         <textarea
           type="text"
           name="link"
           value={link}
           onChange={(e) => setLink(e.target.value)}
         />
+     
  
         <button type="submit">Add Goal</button>
       </form>
