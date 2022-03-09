@@ -35,7 +35,7 @@ export default function HomePage() {
 
            
             <div>
-            Welkome <br />
+            Welcome <br />
             {user && user.username}
             </div>
       
