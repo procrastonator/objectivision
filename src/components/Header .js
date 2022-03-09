@@ -35,7 +35,7 @@ const {isLoggedIn, user, logOutUser } = useContext(AuthContext);
         <NavLink className="nav-link active" aria-current="page" to="/projects/create">New Project</NavLink> 
 
             &nbsp;
-            <button onClick={logOutUser}>Logout</button>
+            <button onClick={logOutUser} to="/" >Logout</button>
         
         </>
         } 

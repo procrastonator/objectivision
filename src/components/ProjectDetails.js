@@ -4,44 +4,43 @@ import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
 import "./ProjectDetails.css"
 import noImage from "./assets/no-image.png"
+import { useNavigate } from 'react-router-dom';
 
 
 export default function ProjectDetails(props) {
 
 
-
+  const navigate = useNavigate();
   const { projectId } = useParams();
   const [projectDetails, setProjectDetails] = useState({ undefined })
   const { getToken } = useContext(AuthContext)
   const storedToken = getToken();
-
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
 
-  useEffect(() => {
 
+  useEffect(() => {
     axios
       .get(
         `${process.env.REACT_APP_API_URL}/projects/${projectId}`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((result) => {
-
-        console.log(result.data)
-
+        // console.log(result.data)
         setProjectDetails(result.data)
-
 
         let newfilter = result.data.goals
         let newDoneArr = newfilter.filter(element => element.isDone === true)
-        setIsDoneArr(newDoneArr)
 
+        setIsDoneArr(newDoneArr)
         let newInProgressArr = newfilter.filter(element => element.isDone === false)
         setInProgress(newInProgressArr)
 
       })
       .catch();
-  }, []);
+  }, [isDoneArr]);
+
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -50,11 +49,16 @@ export default function ProjectDetails(props) {
     // const goalDetails = true // True
     console.log("WE CLICKED 'DONE'");
     axios.put(
-      `${process.env.REACT_APP_API_URL}/goals/${id}/update`, {isDone:true})
+      `${process.env.REACT_APP_API_URL}/goals/${id}/update`, 
+      {isDone:true},
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
       .then((response) => {
         
         // console.log(response.data.isDone);
-        props.updateProjects();
+        // props.updateProjects();
+        // navigate(`/projects`);
+       
 
     }).catch((error) => {
       console.log("Oops, we fucked up.");
@@ -67,11 +71,14 @@ export default function ProjectDetails(props) {
       console.log("We Clicked Not Done")
   
       axios.put(
-        `${process.env.REACT_APP_API_URL}/goals/${id}/update`, {isDone:false}) // <- {} is your body!
+        `${process.env.REACT_APP_API_URL}/goals/${id}/update`, 
+        {isDone:false},
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
         .then((response) => {
-          // console.log(response.data.isDone)
-          props.updateProjects();
-  
+          console.log("get Somthing", response)
+          // props.updateProjects();
+          // navigate(`/projects`);
       })};
 
     

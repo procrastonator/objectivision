@@ -32,8 +32,6 @@ export default function HomePage() {
     }
     { isLoggedIn &&
     <>
-
-           
             <div>
             Welcome <br />
             {user && user.username}

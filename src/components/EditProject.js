@@ -1,20 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState, useEffect } from "react";
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from '../context/auth.context';
 
 
 export default function EditProject(props) {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-      console.log(title, description)
-  const { projectId } = useParams();      
+  const { projectId } = useParams();   
+  const { getToken } = useContext(AuthContext)   
   const navigate = useNavigate();  
+  const storedToken = getToken();
 
-  useEffect(() => {                                 
+  useEffect(() => {  
+    
     axios
-      .get(`${process.env.REACT_APP_API_URL}/projects/${projectId}`)
+      .get(`${process.env.REACT_APP_API_URL}/projects/${projectId}`,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
+      
       .then((response) => {
       
         const oneProject = response.data;
@@ -32,7 +38,9 @@ export default function EditProject(props) {
  
    
     axios
-      .put(`${process.env.REACT_APP_API_URL}/projects/${projectId}`, requestBody)
+      .put(`${process.env.REACT_APP_API_URL}/projects/${projectId}`, requestBody,
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
       .then((response) => {
         props.updateProjects();
         navigate(`/projects/${projectId}`)
@@ -42,7 +50,9 @@ export default function EditProject(props) {
   const deleteProject = () => {                  
    
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/projects/${projectId}`)
+      .delete(`${process.env.REACT_APP_API_URL}/projects/${projectId}`,
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
       .then(() => {
         props.updateProjects();
         navigate("/projects");

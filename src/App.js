@@ -18,59 +18,78 @@ import UpdateGoal from './components/UpdateGoal';
 
 function App() {
 
-  const [project, setProject] = useState([])
-
-  const { isLoggedIn, getToken } = useContext(AuthContext);
-
-  useEffect( () => {
-    fetchProjects();
-  }, [isLoggedIn]);
-
+  const [projects, setProjects] = useState([]);
+  const [ userProjects, setUserProjects] = useState([]);
+  const { getToken, user } = useContext(AuthContext);
 
   const fetchProjects = () => {
-    const storedToken =getToken();
+    const storedToken = getToken();
 
     axios.get(
       `${process.env.REACT_APP_API_URL}/projects`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then(response => {
-        setProject(response.data);
+        setProjects(response.data);
       })
       .catch(e => console.log("error getting list of projects...", e));
   }
 
+  useEffect( () => {
+    fetchProjects();
+  }, []);
 
-
+  useEffect( () => {
+    if (user && projects.length){
+      const userfilter = projects.filter(e => e.userId === user._id);
+      setUserProjects(userfilter) 
+    }
+  }, [user, projects]);
 
 
   return (
     <div className="App">
 
     <Header />
-
-
       <Routes>      
         <Route path="/" element={ <HomePage /> } />
 
         <Route path="/projects" element={ 
-        <IsPrivate>
-        <ProjectsList  projectData={project} /> 
-        </IsPrivate>
+      <IsPrivate>
+        <ProjectsList  projectData={userProjects} /> 
+      </IsPrivate>
         } />
-        <Route path='/projects/:projectId' element={<ProjectDetails updateProjects={fetchProjects}/>} />
-        <Route path='/projects/:projectId/goal' element={<CreateGoal updateProjects={fetchProjects}/>} />
-        {/* <Route path='/projects/:projectId/updateGoal/:goalId' element = {<UpdateGoal />} /> */}
-        <Route path='/projects/:goalId/update' element = {<UpdateGoal updateProjects={fetchProjects} />} />
+        
+        <Route path='/projects/:projectId' element={
+      <IsPrivate>
+        <ProjectDetails updateProjects={fetchProjects}/>
+      </IsPrivate>
+        } />
 
-        <Route path="/projects/create" element={ <CreateProject updateProjects={fetchProjects}  />} />
+        <Route path='/projects/:projectId/goal' element={
+      <IsPrivate>
+        <CreateGoal updateProjects={fetchProjects}/>
+      </IsPrivate>
+        }  />
+       
+       
+        <Route path='/projects/:goalId/update' element = {
+      <IsPrivate>
+        <UpdateGoal updateProjects={fetchProjects} />
+      </IsPrivate>
+        } />
+
+        <Route path="/projects/create" element={ 
+      <IsPrivate>
+        <CreateProject updateProjects={fetchProjects}  />
+      </IsPrivate>
+        } />
        
         <Route path="/projects/:projectId/edit" element={ 
-          <IsPrivate>
+      <IsPrivate>
         <EditProject updateProjects={fetchProjects} /> 
-        </IsPrivate>
+      </IsPrivate>
         } /> 
-
 
         <Route path="/signup" element={
            <IsAnon>
@@ -83,13 +102,7 @@ function App() {
         </IsAnon> 
         } />
 
-
-
-
       </Routes>
-      
-
-
     </div>
   );
 }
