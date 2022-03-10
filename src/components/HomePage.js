@@ -48,14 +48,14 @@ export default function HomePage() {
     { isLoggedIn &&
     <>
             <div>
-            Welcome <br />
-            {user && user.username}
+           <h4> Welcome  </h4>
+           <h2> {user && user.username} </h2>
+           <h5>Are you ready to make a new project? </h5>
             </div>
       
-    <br />
+   
     <button><NavLink to="/projects">Projects</NavLink> </button>
-    <br /> 
-    <br /> 
+    
     <button> <NavLink to="/projects/create">New Project</NavLink> </button>
     </>
     }
