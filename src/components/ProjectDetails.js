@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
 import "./ProjectDetails.css"
-// import noImage from "./assets/To-do-Note.png"
+import noImage from "./assets/To-do-Note.png"
 import { useNavigate } from 'react-router-dom';
 
 
@@ -90,8 +90,12 @@ export default function ProjectDetails(props) {
 
 
       <h2>{projectDetails.title}</h2>
-      <img src={projectDetails.image} alt="default-pic" width="150" height="150"></img>
-      <h4>description</h4>
+      
+      {projectDetails.image
+          ? <img src={projectDetails.image} alt="pictur" width="200" height="200" />
+          : <img src={noImage} alt="no pic" width="200" height="200" /> }
+
+      <h4>Description:</h4>
       <p>{projectDetails.description}</p>
 
       <Link to={`/projects/${projectId}/goal`}>
