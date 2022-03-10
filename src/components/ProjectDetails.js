@@ -17,6 +17,7 @@ export default function ProjectDetails(props) {
   const storedToken = getToken();
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
+  const [toogleState, setToogleState] = useState (false);
 
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export default function ProjectDetails(props) {
 
       })
       .catch();
-  }, []);
+  }, [toogleState]);
 
   
 
@@ -54,10 +55,8 @@ export default function ProjectDetails(props) {
       { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        // console.log(response.data.isDone);
-        // props.updateProjects();
-        // navigate(`/projects`);
-
+        setToogleState(!toogleState)
+        console.log(toogleState)
     }).catch((error) => {
       console.log("Oops, we fucked up.");
       console.log(error);
@@ -75,8 +74,7 @@ export default function ProjectDetails(props) {
         )
         .then((response) => {
           console.log("get Somthing", response)
-          // props.updateProjects();
-          // navigate(`/projects`);
+          setToogleState(!toogleState)
       })};
 
     
@@ -100,7 +98,7 @@ export default function ProjectDetails(props) {
       </Link>
 
 
-      <h3> Is done </h3>
+      <h3> Is Done: </h3>
       {isDoneArr.map((element, index) => {
         return (
           <div key={element._id}>
@@ -121,7 +119,7 @@ export default function ProjectDetails(props) {
       })}
 
       <hr />
-      <h3> In Progress </h3>
+      <h3> In Progress: </h3>
       {inProgress.map((element, index) => {
         return (
           <div key={element._id}>
