@@ -15,6 +15,7 @@ import IsAnon from './components/IsAnon';
 import { AuthContext} from "./context/auth.context"
 import CreateGoal from './components/CreateGoal';
 import UpdateGoal from './components/UpdateGoal';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -103,6 +104,8 @@ function App() {
         } />
 
       </Routes>
+
+      <Footer />
     </div>
   );
 }

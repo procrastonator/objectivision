@@ -110,8 +110,8 @@ export default function ProjectDetails(props) {
 
       <div className="container px-4">
         <div className="row gx-5">
-          <div class="col">
-            <div class="p-3 border InProgress"><h3> In Progress: </h3>
+          <div className="col">
+            <div className="p-3 border InProgress"><h3> In Progress: </h3>
               {inProgress.map((element, index) => {
                 return (
                   <div key={element._id}>
@@ -144,8 +144,8 @@ export default function ProjectDetails(props) {
                 )
               })} </div>
           </div>
-          <div class="col">
-            <div class="p-3 border bg Done"><h3> Is Done: </h3>
+          <div className="col">
+            <div className="p-3 border bg Done"><h3> Is Done: </h3>
               {isDoneArr.map((element, index) => {
                 return (
                   <div key={element._id}>
