@@ -18,7 +18,7 @@ export default function ProjectDetails(props) {
   const storedToken = getToken();
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
-  const [toggleState, setToogleState] = useState(false);
+  const [toggleState, setToggleState] = useState(false);
 
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function ProjectDetails(props) {
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
       .then((response) => {
-        setToogleState(!toggleState)
+        setToggleState(!toggleState)
         console.log(toggleState)
       }).catch((error) => {
         console.log("Oops, we fucked up.");
@@ -76,7 +76,7 @@ export default function ProjectDetails(props) {
     )
       .then((response) => {
         console.log("get Somthing", response)
-        setToogleState(!toggleState)
+        setToggleState(!toggleState)
       })
   };
 
@@ -98,14 +98,14 @@ export default function ProjectDetails(props) {
       <p>{projectDetails.description}</p>
 
       <Link to={`/projects/${projectId}/goal`}>
-        <button>Add New Goal</button>
+        <button className="btn btn-warning">Add New Goal</button>
       </Link>
 
       <Link to={`/projects/${projectId}/edit`}>
-        <button>Edit Project or Delete</button>
+        <button className="btn btn-warning" >Edit Project or Delete</button>
       </Link>
 
-        <button onClick={goBack}>Back</button>
+        <button className="btn btn-warning" onClick={goBack}>Back</button>
     
 
 
@@ -134,11 +134,11 @@ export default function ProjectDetails(props) {
                     </div>
 
                     <Link to={`/projects/${element._id}/update`}>
-                      <button>update Goal</button>
+                      <button className="btn btn-success">update Goal</button>
                     </Link>
 
 
-                    <button id={element._id} onClick={handleSubmit}>
+                    <button className="btn btn-success" id={element._id} onClick={handleSubmit}>
                       Done
                     </button>
 
@@ -159,7 +159,7 @@ export default function ProjectDetails(props) {
                       <p>Description:{element.description}</p>
 
                     </div>
-                    <button id={element._id} onClick={handleSubmitNotDONE}>
+                    <button className="btn btn-warning" id={element._id} onClick={handleSubmitNotDONE}>
                       I think I am not done
                     </button>
 
