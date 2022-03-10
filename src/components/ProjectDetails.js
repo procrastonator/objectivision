@@ -38,7 +38,7 @@ export default function ProjectDetails(props) {
 
       })
       .catch();
-  }, [isDoneArr]);
+  }, []);
 
   
 
