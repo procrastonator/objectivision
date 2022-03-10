@@ -4,12 +4,13 @@ import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
 import "./ProjectDetails.css"
 // import noImage from "./assets/To-do-Note.png"
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function ProjectDetails(props) {
 
-
+  const navigate = useNavigate();
   
   const { projectId } = useParams();
   const [projectDetails, setProjectDetails] = useState({ undefined })
@@ -77,7 +78,9 @@ export default function ProjectDetails(props) {
           setToogleState(!toggleState)
       })};
 
-    
+      const goBack = () => {
+        navigate(`/projects`)
+    }
   
 
   return (
@@ -97,6 +100,9 @@ export default function ProjectDetails(props) {
         <button>Edit Project or Delete</button>
       </Link>
 
+      <div>
+      <button onClick={goBack}>Back</button>
+      </div>
 
       <h3> Is Done: </h3>
       {isDoneArr.map((element, index) => {
