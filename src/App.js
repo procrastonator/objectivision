@@ -54,7 +54,7 @@ function App() {
 
     <Header />
       <Routes>      
-        <Route path="/" element={ <HomePage /> } />
+        <Route path="/" element={ <HomePage projectData={userProjects} /> } />
 
         <Route path="/projects" element={ 
       <IsPrivate>
