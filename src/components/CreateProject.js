@@ -46,16 +46,6 @@ export default function CreateProject(props) {
 
       <form onSubmit={handleSubmit}>
 
-      <label>
-          Picture: (add url)
-          <textarea
-            type="text"
-            name="image"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
-        </label>
-
         <label>
           Title:
           <input
@@ -66,10 +56,19 @@ export default function CreateProject(props) {
           />
         </label>
         <br /><br />
+        <label>
+          Picture: (add url)
+          <tinput
+            type="text"
+            name="image"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </label>
 
         <label>
           Description:
-          <textarea
+          <input
             type="text"
             name="description"
             value={description}
