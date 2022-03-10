@@ -18,11 +18,8 @@ export default function ProjectDetails(props) {
   const storedToken = getToken();
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
-<<<<<<< HEAD
   const [toggleState, setToggleState] = useState (false);
-=======
-  const [toggleState, setToogleState] = useState(false);
->>>>>>> 5c7087a768a60986e8fa02a6bfeef016338afebf
+  
 
 
   useEffect(() => {
@@ -68,7 +65,6 @@ export default function ProjectDetails(props) {
       });
   };
 
-<<<<<<< HEAD
     function handleSubmitNotDONE(e) {
       e.preventDefault();
       const id = e.target.id;
@@ -83,30 +79,12 @@ export default function ProjectDetails(props) {
           console.log("get Somthing", response)
           setToggleState(!toggleState)
       })};
-=======
-  function handleSubmitNotDONE(e) {
-    e.preventDefault();
-    const id = e.target.id;
-    console.log("We Clicked Not Done")
 
-    axios.put(
-      `${process.env.REACT_APP_API_URL}/goals/${id}/update`,
-      { isDone: false },
-      { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
-      .then((response) => {
-        console.log("get Somthing", response)
-        setToogleState(!toggleState)
-      })
-  };
-
-  const goBack = () => {
-    navigate(`/projects`)
-  }
->>>>>>> 5c7087a768a60986e8fa02a6bfeef016338afebf
-
-
+      const goBack = () => {
+        navigate(`/projects`)
+      }
   return (
+    
     <div className='ProjectDetails'>
 
 
