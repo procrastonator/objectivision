@@ -10,7 +10,7 @@ export default function Header() {
   // console.log(user)
 
   return (
-      <nav className="navbar navbar-expand-lg navbar-light background">
+      <nav className="navbar navbar background">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
             <div>

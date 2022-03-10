@@ -7,7 +7,22 @@
   color: aliceblue;
   /* background-color: burlywood; */
 }
-
+.contain{
+    display: flex;
+}
 .position{
     display: flex;
+}
+.navigate{
+    display: flex;
+}
+.box{
+   display: flex;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    align-content: flex-start;
+    flex-direction: row;
 }
