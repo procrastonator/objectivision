@@ -2,7 +2,8 @@ import React, { useContext } from "react"
 import { NavLink } from "react-router-dom"
 import { AuthContext } from "../context/auth.context";
 import "./HomePage.css"
-import icon from "./assets/getting-it-done.jpeg"
+import Register from "./assets/getting-it-done.jpeg"
+import login from "./assets/Login-postit.webp"
 
 
 
@@ -17,16 +18,30 @@ export default function HomePage() {
     { !isLoggedIn &&
     <div className="HomepageBackground">
     <div className="center">
+    <div classname="title">
     <h1>Project Vision</h1>
     <h2> A place to get your Goals in order</h2>
+    </div>
+      <div className="container" >
+    <div > 
+    <NavLink to="/signup">
+    <div className="down">
+    <img src={Register} alt="icon" width="300" height="300" />
+    Register
+    </div>
+    </NavLink> 
+     </div>
 
-    <div> <img src={icon} alt="icon" width="300" height="300"/>
-
-   <div> <NavLink to="/signup">Register</NavLink> </div> </div>
-
-   <div> <img src={icon} alt="icon" width="300" height="300"/>
-     <div> <NavLink to="/login">Login</NavLink>  </div> </div>
+   <div> 
+   <NavLink to="/login">
+   <div className="down">
+   <img src={login} alt="icon" to="/login"width="300" height="300"/>
+    Login
+    </div>
+    </NavLink>  
+    </div> 
     
+    </div>
     </div>
     </div>
     }

@@ -7,3 +7,7 @@
   color: aliceblue;
   /* background-color: burlywood; */
 }
+
+.position{
+    display: flex;
+}

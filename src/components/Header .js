@@ -23,14 +23,14 @@ export default function Header() {
               {isLoggedIn && (
                 <>
                   <NavLink
-                    className="btn btn-outline-warning"
+                    className=" btn btn-outline-warning "
                     aria-current="page"
                     to="/projects"
                   >
                     Projects
                   </NavLink>
                   <NavLink
-                    className="btn btn-outline-warning"
+                    className=" btn btn-outline-warning "
                     aria-current="page"
                     to="/projects/create"
                   >
@@ -53,14 +53,14 @@ export default function Header() {
               {!isLoggedIn && (
                 <>
                   <NavLink
-                    className="nav-link active"
+                    className="position btn btn-outline-warning"
                     aria-current="page"
                     to="/signup"
                   >
                     Register
                   </NavLink>
                   <NavLink
-                    className="nav-link active"
+                    className="position btn btn-outline-warning"
                     aria-current="page"
                     to="/login"
                   >
