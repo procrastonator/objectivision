@@ -38,7 +38,7 @@ export default function ProjectDetails(props) {
 
       })
       .catch();
-  }, [isDoneArr]);
+  }, [isDoneArr]); // <-- this doesn't work 
 
   
 
@@ -102,7 +102,7 @@ export default function ProjectDetails(props) {
       </Link>
 
 
-      <h3> Is done </h3>
+      <h3> Is Done: </h3>
       {isDoneArr.map((element, index) => {
         return (
           <div key={element._id}>
@@ -123,7 +123,7 @@ export default function ProjectDetails(props) {
       })}
 
       <hr />
-      <h3> In Progress </h3>
+      <h3> In Progress: </h3>
       {inProgress.map((element, index) => {
         return (
           <div key={element._id}>
