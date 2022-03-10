@@ -39,6 +39,9 @@ export default function CreateProject(props) {
     .catch( e => console.log("error creating new project...", e) )
     
   }
+  const goBack = () => {
+    navigate(`/projects`)
+  }
 
   return (
     <div className="CreateProject">
@@ -79,7 +82,7 @@ export default function CreateProject(props) {
         <button type="submit">Submit</button>
       </form>
 
-
+      <button onClick={goBack}>Back</button>
     </div>
   )
 }

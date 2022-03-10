@@ -40,6 +40,10 @@ export default function CreateGoal(props) {
       })
       .catch((error) => console.log(error));
   };
+
+  const goBack = () => {
+    navigate(`/projects/${projectId}`)
+  }
   
   return (
     <div className="AddGoal">
@@ -74,6 +78,10 @@ export default function CreateGoal(props) {
  
         <button type="submit">Add Goal</button>
       </form>
+
+
+      <button onClick={goBack}>Back</button>
+      
     </div>
   );
 }

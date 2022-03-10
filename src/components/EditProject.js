@@ -60,7 +60,11 @@ export default function EditProject(props) {
         navigate("/projects");
       })
       .catch((err) => console.log(err));
-  };  
+  }; 
+
+  const goBack = () => {
+    navigate(`/projects/${projectId}`)
+  }
 
   return (
     <div>
@@ -96,7 +100,9 @@ export default function EditProject(props) {
         <input type="submit" value="Submit" />
       </form>
 
+      <button onClick={goBack}>Back</button>
       <button onClick={deleteProject}>Delete Project</button>
+     
     
     </div>
   )
