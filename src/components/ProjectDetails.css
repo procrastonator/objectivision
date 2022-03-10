@@ -1,7 +1,19 @@
 .InProgress{
     background-color: yellow;
+    position:relative;
 }
 
 .Done{
     background-color: green;
+    position: relative;
 }
+
+.Size{
+    height: 0rem;
+    width: 50rem;
+}
+
+.ProjectDetails{
+    background-color: rgb(236, 236, 186);
+}
+

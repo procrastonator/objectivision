@@ -25,7 +25,8 @@ function App() {
 
   const fetchProjects = () => {
     const storedToken = getToken();
-
+   
+  
     axios.get(
       `${process.env.REACT_APP_API_URL}/projects`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
@@ -38,7 +39,7 @@ function App() {
 
   useEffect( () => {
     fetchProjects();
-  }, []);
+  },[]);
 
   useEffect( () => {
     if (user && projects.length){
