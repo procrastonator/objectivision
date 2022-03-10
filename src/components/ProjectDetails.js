@@ -17,7 +17,7 @@ export default function ProjectDetails(props) {
   const storedToken = getToken();
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
-  const [toogleState, setToogleState] = useState (false);
+  const [toggleState, setToogleState] = useState (false);
 
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function ProjectDetails(props) {
 
       })
       .catch();
-  }, [toogleState]);
+  }, [toggleState]);
 
   
 
@@ -55,8 +55,8 @@ export default function ProjectDetails(props) {
       { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        setToogleState(!toogleState)
-        console.log(toogleState)
+        setToogleState(!toggleState)
+        console.log(toggleState)
     }).catch((error) => {
       console.log("Oops, we fucked up.");
       console.log(error);
@@ -74,7 +74,7 @@ export default function ProjectDetails(props) {
         )
         .then((response) => {
           console.log("get Somthing", response)
-          setToogleState(!toogleState)
+          setToogleState(!toggleState)
       })};
 
     
