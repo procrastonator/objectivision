@@ -18,8 +18,7 @@ export default function ProjectDetails(props) {
   const storedToken = getToken();
   const [isDoneArr, setIsDoneArr] = useState([]);
   const [inProgress, setInProgress] = useState([]);
-  const [toggleState, setToggleState] = useState (false);
-  
+  const [toggleState, setToogleState] = useState(false);
 
 
   useEffect(() => {
@@ -57,7 +56,7 @@ export default function ProjectDetails(props) {
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
       .then((response) => {
-        setToggleState(!toggleState)
+        setToogleState(!toggleState)
         console.log(toggleState)
       }).catch((error) => {
         console.log("Oops, we fucked up.");
@@ -65,34 +64,35 @@ export default function ProjectDetails(props) {
       });
   };
 
-    function handleSubmitNotDONE(e) {
-      e.preventDefault();
-      const id = e.target.id;
-      console.log("We Clicked Not Done")
-  
-      axios.put(
-        `${process.env.REACT_APP_API_URL}/goals/${id}/update`, 
-        {isDone:false},
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-        )
-        .then((response) => {
-          console.log("get Somthing", response)
-          setToggleState(!toggleState)
-      })};
+  function handleSubmitNotDONE(e) {
+    e.preventDefault();
+    const id = e.target.id;
+    console.log("We Clicked Not Done")
 
-      const goBack = () => {
-        navigate(`/projects`)
-      }
+    axios.put(
+      `${process.env.REACT_APP_API_URL}/goals/${id}/update`,
+      { isDone: false },
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+    )
+      .then((response) => {
+        console.log("get Somthing", response)
+        setToogleState(!toggleState)
+      })
+  };
+
+  const goBack = () => {
+    navigate(`/projects`)
+  }
+
+
   return (
-    
     <div className='ProjectDetails'>
 
 
       <h2>{projectDetails.title}</h2>
-      
       {projectDetails.image
-          ? <img src={projectDetails.image} alt="pictur" width="200" height="200" />
-          : <img src={noImage} alt="no pic" width="200" height="200" /> }
+        ? <img src={projectDetails.image} alt="pictur" width="200" height="200" />
+        : <img src={noImage} alt="no pic" width="200" height="200" />}
 
       <h4>Description:</h4>
       <p>{projectDetails.description}</p>
@@ -105,17 +105,19 @@ export default function ProjectDetails(props) {
         <button>Edit Project or Delete</button>
       </Link>
 
+        <button onClick={goBack}>Back</button>
+    
 
 
-
-      <div className="container px-4">
-        <div className="row gx-5">
-          <div className="col">
-            <div className="p-3 border InProgress"><h3> In Progress: </h3>
+   <div className='.contain'>
+    <div class="container px-4">
+        <div class="row gx-5">
+          <div class="col Size">
+            <div class="p-3 border InProgress"><h3> In Progress: </h3>
               {inProgress.map((element, index) => {
                 return (
                   <div key={element._id}>
-                  <hr />
+                    <hr />
 
                     <h4>Goals:</h4>
                     <div >
@@ -142,10 +144,10 @@ export default function ProjectDetails(props) {
 
                   </div>
                 )
-              })} </div>
+              })}</div>
           </div>
-          <div className="col">
-            <div className="p-3 border bg Done"><h3> Is Done: </h3>
+          <div class="col">
+            <div class="p-3 border Done"><h3> Is Done: </h3>
               {isDoneArr.map((element, index) => {
                 return (
                   <div key={element._id}>
@@ -167,17 +169,10 @@ export default function ProjectDetails(props) {
           </div>
         </div>
       </div>
+</div>
 
 
-
-      <div>
-        <button onClick={goBack}>Back</button>
-      </div>
-
-
-
-
-
+    
     </div>
   )
 }

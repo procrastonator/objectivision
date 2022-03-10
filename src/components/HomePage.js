@@ -19,6 +19,8 @@ export default function HomePage() {
     <div className="HomepageBackground">
     <div className="center">
     <div classname="title">
+  
+</div>
     <h1>Project Vision</h1>
     <h2> A place to get your Goals in order</h2>
     </div>
@@ -41,7 +43,6 @@ export default function HomePage() {
     </NavLink>  
     </div> 
     
-    </div>
     </div>
     </div>
     }

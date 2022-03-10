@@ -58,7 +58,6 @@ export default function CreateProject(props) {
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
-        <br /><br />
         <label>
           Picture: (add url)
           <input
