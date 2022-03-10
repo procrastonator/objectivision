@@ -9,6 +9,7 @@ export default function EditProject(props) {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
   const { projectId } = useParams();   
   const { getToken } = useContext(AuthContext)   
   const navigate = useNavigate();  
@@ -26,6 +27,7 @@ export default function EditProject(props) {
         const oneProject = response.data;
         setTitle(oneProject.title);
         setDescription(oneProject.description);
+        setImage(oneProject.image);
       })
       .catch((error) => console.log(error));
     
@@ -34,7 +36,7 @@ export default function EditProject(props) {
   const handleFormSubmit = (e) => {                   
     e.preventDefault();
     
-    const requestBody = { title, description };
+    const requestBody = { title, description, image };
  
    
     axios
@@ -74,11 +76,22 @@ export default function EditProject(props) {
         />
         
         <label>Description:</label>
-        <textarea
+        <input
           name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+
+        <label>
+          Picture: (add url)
+          <input
+            type="text"
+            name="image"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </label>
+        
 
         <input type="submit" value="Submit" />
       </form>

@@ -15,6 +15,7 @@ export default function UpdateGoal(props) {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
   const storedToken = getToken();
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function UpdateGoal(props) {
         const oneProject = response.data;
         setTitle(oneProject.title);
         setDescription(oneProject.description);
+        setLink(oneProject.link)
       })
       .catch((error) => console.log(error));
   }, []);
@@ -34,7 +36,7 @@ export default function UpdateGoal(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const goalDetails = { title, description };
+    const goalDetails = { title, description, link };
 
     axios
       .put(
@@ -68,13 +70,24 @@ export default function UpdateGoal(props) {
 
         <label>
           Description:
+          </label>
           <textarea
             type="text"
             name="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-        </label>
+       
+
+        <p>Add your url Link here</p>
+        <label> Link:</label>
+        <textarea
+          type="text"
+          name="link"
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
+        />
+     
 
         <button type="submit">Submit</button>
       </form>

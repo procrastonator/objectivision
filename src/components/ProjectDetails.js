@@ -3,14 +3,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
 import "./ProjectDetails.css"
-import noImage from "./assets/no-image.png"
-import { useNavigate } from 'react-router-dom';
+// import noImage from "./assets/To-do-Note.png"
+
 
 
 export default function ProjectDetails(props) {
 
 
-  const navigate = useNavigate();
+  
   const { projectId } = useParams();
   const [projectDetails, setProjectDetails] = useState({ undefined })
   const { getToken } = useContext(AuthContext)
@@ -54,11 +54,9 @@ export default function ProjectDetails(props) {
       { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        
         // console.log(response.data.isDone);
         // props.updateProjects();
         // navigate(`/projects`);
-       
 
     }).catch((error) => {
       console.log("Oops, we fucked up.");
@@ -89,7 +87,7 @@ export default function ProjectDetails(props) {
 
 
       <h2>{projectDetails.title}</h2>
-      <img src={noImage} alt="noImage" width="100" height="100"></img>
+      <img src={projectDetails.image} alt="default-pic" width="150" height="150"></img>
       <h4>description</h4>
       <p>{projectDetails.description}</p>
 
