@@ -35,7 +35,7 @@ export default function CreateGoal(props) {
         setDescription("");
         setLink("")
         props.updateProjects();
-        navigate("/projects");
+        navigate(`/projects/${projectId}`);
         
       })
       .catch((error) => console.log(error));
@@ -81,7 +81,7 @@ export default function CreateGoal(props) {
 
 
       <button onClick={goBack}>Back</button>
-      
+
     </div>
   );
 }

@@ -1,8 +1,7 @@
-.UpdateGoal.inProgress{
-    background-color: #f50e0e;
+.InProgress{
+    background-color: yellow;
 }
 
-.UpdateGoal.finished {
-    background-color: aquamarine;
-
+.Done{
+    background-color: green;
 }
