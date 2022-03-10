@@ -1,6 +1,9 @@
+
 .background {
-  /* background-image: url("./components/assets/large-corkBoard.jpeg"); */
-  /* background-repeat: no-repeat;
+
+  background-image: url("./assets/large-corkBoard.jpeg");
+ /* background-repeat: no-repeat; */
   background-size: cover;
-  color: aliceblue; */ 
+  color: aliceblue;
+  /* background-color: burlywood; */
 }
