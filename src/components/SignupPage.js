@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context"
+import "./SignupPage.css"
 
 
 
@@ -55,7 +56,7 @@ function SignupPage(props) {
       {errorMessage && <p className="error">{errorMessage}</p>}
 
       <form onSubmit={handleSignupSubmit}>
-     
+        <div className="inputUsername">
         <label>
         Username:
         <input 
@@ -66,7 +67,9 @@ function SignupPage(props) {
           onChange={handleUsername}
         />
         </label>
+        </div>
 
+        <div className="inputEmail">
         <label>
         Email:
         <input 
@@ -77,7 +80,8 @@ function SignupPage(props) {
           onChange={handelEmail}
         />
         </label>
-
+        </div>
+        <div className="inputPassword">
         <label>
         Password:
         <input 
@@ -88,15 +92,18 @@ function SignupPage(props) {
           onChange={handlePassword}
         />
         </label>
+        </div>
 
-
-        <button type="submit">Register</button>
+        <div className="registerButton">
+        <button className="btn btn-success" type="submit">Register</button>
+        </div>
       </form>
 
-
-
-      <p>Already have account?</p>
+      <div className="loginButton">
+        Already have account?
+        <br></br>
       <Link to={"/login"}> Login</Link>
+      </div>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"
+import "./LoginPage.css"
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
@@ -42,7 +43,8 @@ function LoginPage(props) {
       {errorMessage && <p className="error">{errorMessage}</p>}
 
       <form onSubmit={handleLoginSubmit}>
-        <label>
+      <div>
+        <label className="inputFieldEmail">
           Email:
           <input
             type="text"
@@ -52,7 +54,8 @@ function LoginPage(props) {
             onChange={handleEmail}
           />
         </label>
-
+        </div>
+        <div className="inputFieldPassword">
         <label>
           Password:
           <input
@@ -63,10 +66,11 @@ function LoginPage(props) {
             onChange={handlePassword}
           />
         </label>
-
-        <button type="submit">Login</button>
+        </div>
+        <div className="submitButton ">
+        <button className="btn btn-success" type="submit">Login</button>
+        </div>
       </form>
-
 
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>

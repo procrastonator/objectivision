@@ -1,3 +1,7 @@
+.ProjectDetails {
+    height: 150rem;
+}
+
 .InProgress{
     background-color: #ffc107;
     position:relative;
@@ -10,10 +14,33 @@
 
 .Size{
     height: 0rem;
-    width: 50rem;
+    width: 100rem;
 }
 
 .border{
     border-radius: 10%;
 }
+
+.btn-warning {
+    margin-right: 10px;
+}
+
+.buttonNew {
+    margin-right: 0px;
+    margin-left: 200px;
+    margin-bottom: 10px;
+}
+
+.buttonEdit {
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+ }
+
+ .pBackButton2 {
+     margin-bottom: 19px;
+     margin-right: 80px;
+     margin-left: 5px;
+     margin-top: 9px;
+ }
 

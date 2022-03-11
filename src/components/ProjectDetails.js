@@ -98,14 +98,13 @@ export default function ProjectDetails(props) {
       <p>{projectDetails.description}</p>
 
       <Link to={`/projects/${projectId}/goal`}>
-        <button className="btn btn-warning">Add New Goal</button>
+        <button className='btn btn-warning buttonNew'>Add New Goal</button>
       </Link>
 
       <Link to={`/projects/${projectId}/edit`}>
-        <button className="btn btn-warning" >Edit Project or Delete</button>
+        <button className='btn btn-warning buttonEdit'>Edit Project or Delete</button>
       </Link>
-
-        <button className="btn btn-warning" onClick={goBack}>Back</button>
+        <button onClick={goBack} class="btn btn-dark pBackButton2">Back</button>
     
 
 
@@ -114,7 +113,15 @@ export default function ProjectDetails(props) {
         <div class="row gx-5">
           <div class="col Size">
             <div class="p-3 border InProgress"><h3> In Progress: </h3>
-              {inProgress.map((element, index) => {
+              {inProgress.length === 0 ?<>
+                <p>Looks like you have no goals yet</p>
+                <Link to={`/projects/${projectId}/goal`}>
+                   <button className='btn btn-warning'>Add New Goal</button>
+                  </Link>
+              </>
+              
+                
+                : inProgress.map((element, index) => {
                 return (
                   <div key={element._id}>
                     <hr />
@@ -123,22 +130,15 @@ export default function ProjectDetails(props) {
                     <div >
                       <h5>Title: {element.title}</h5>
                       <p>Description: {element.description}</p>
-
-
-
                       <a href={element.link} target="{_blank}">{element.link}   </a>
-
-
-
-
                     </div>
 
                     <Link to={`/projects/${element._id}/update`}>
-                      <button className="btn btn-success">update Goal</button>
+                      <button className='btn btn-warning'>update Goal</button>
                     </Link>
 
 
-                    <button className="btn btn-success" id={element._id} onClick={handleSubmit}>
+                    <button id={element._id} onClick={handleSubmit} className="btn btn-success">
                       Done
                     </button>
 
@@ -148,7 +148,8 @@ export default function ProjectDetails(props) {
           </div>
           <div class="col">
             <div class="p-3 border Done"><h3> Is Done: </h3>
-              {isDoneArr.map((element, index) => {
+              {isDoneArr.length === 0 ? <p>Looks like you have no goals finished yet</p>
+                :isDoneArr.map((element, index) => {
                 return (
                   <div key={element._id}>
                     <hr />
@@ -159,7 +160,7 @@ export default function ProjectDetails(props) {
                       <p>Description:{element.description}</p>
 
                     </div>
-                    <button className="btn btn-warning" id={element._id} onClick={handleSubmitNotDONE}>
+                    <button id={element._id} onClick={handleSubmitNotDONE} className="btn btn-warning">
                       I think I am not done
                     </button>
 

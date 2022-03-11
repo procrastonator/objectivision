@@ -1,0 +1,29 @@
+.setTitle{
+    margin-top: 10px;
+    margin-right: 0px;
+}
+.setDescription{
+    margin-top: 10px;
+    margin-right: 0px;
+}
+.setPicture{
+    margin-top: 10px;
+    margin-right: 0px;
+}
+.submit{
+    margin-top: 10px;
+    margin-right: 0px;
+    padding-bottom: 10px;
+}
+
+.deleteProject {
+    margin-right: 10px;
+    margin-left: 65px;
+
+}
+.back {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+

@@ -1,0 +1,21 @@
+.inputUsername {
+    margin-right: 60px;
+}
+
+.inputEmail {
+    margin-top: 10px;
+    margin-right: 28px;
+}
+
+.inputPassword{
+    margin-top: 10px;
+    margin-right: 55px;
+}
+
+.registerButton{
+    margin-top: 10px;
+}
+
+.loginButton {
+    margin-top: 20px;
+}
