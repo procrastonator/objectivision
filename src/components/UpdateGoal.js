@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import "./UpdateGoal.css"
 
 //use UseParams to grab the goalId [x]
 //change your backend route --> grab the goalId with req.params in server side
@@ -56,40 +57,48 @@ export default function UpdateGoal(props) {
       <h1>Update Goal</h1>
 
       <form onSubmit={handleSubmit}>
+      <div>
         <label>
           Title:
+        </label>
+      </div>
+        <div>
           <input
             type="text"
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-        </label>
-        <br />
-        <br />
-
+       </div>
+    	<div>
         <label>
           Description:
           </label>
-          <textarea
+        </div>
+        <div>
+          <textarea rows="4" cols="50"
             type="text"
             name="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-       
+       </div>
 
-        <p>Add your url Link here</p>
-        <label> Link:</label>
+        <div>
+        <label> Link: Add your url Link here</label>
+        </div>
+        <div>
         <textarea
           type="text"
           name="link"
           value={link}
           onChange={(e) => setLink(e.target.value)}
         />
-     
-
-        <button type="submit">Submit</button>
+       </div>
+        <div>
+        <button type="submit" className="btn btn-success submitUpdateGoal">Submit</button>
+        <button className="btn btn-dark backButtonUpdate">Back</button>
+        </div>
       </form>
     </div>
   );
