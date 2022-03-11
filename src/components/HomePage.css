@@ -16,12 +16,17 @@ height: 700px;
 .down{
     display: flex;
     flex-direction: column;
+    
+}
+.textdecoration{
+text-decoration: none;
+color: black;
 }
 .title{
     padding-bottom: 60px;
 }
 .center{
- padding: 130px;
+ padding: 110px 0px 50px 0px;
 }
 .Welkome{
     border: solid 1px rgb(224, 172, 2);

@@ -4,6 +4,7 @@ import "./ProjectList.css"
 import star from "./assets/star-outline.svg"
 import { useEffect } from "react";
 import list from "./assets/projectListPic.jpeg"
+import noImage from "./assets/To-do-Note.png"
 
 export default function ProjectsList(props) {
   const { projectData } = props;
@@ -44,10 +45,12 @@ export default function ProjectsList(props) {
               <div key={element._id}>
                 <br />
                 <section className="project-summary">
-                
                   <Link className="btn btn-warning" to={`/projects/${element._id}`}>{element.title}
                   <img className="star" src={star} alt="no star" width="20" height="20" />
                   </Link>
+                {element.image
+                ? <img className={"border"} src={element.image} alt="pictur" width="70" height="70" />
+                  : <img src={noImage} alt="no pic" width="70" height="70" />}
                   
                   <p> This project has  {element.goals.length} goals </p>
                 </section>

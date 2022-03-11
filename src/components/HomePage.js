@@ -38,19 +38,19 @@ export default function HomePage(props) {
     </div>
       <div className="container" >
     <div > 
-    <NavLink to="/signup">
-    <div className="down">
+    <NavLink className={"textdecoration"} to="/signup">
+    <div className="down" >
+    Register here
     <img className="home-corner" src={Register} alt="icon" width="300" height="300" />
-    Register
     </div>
     </NavLink> 
      </div>
 
    <div> 
-   <NavLink to="/login">
+   <NavLink className={"textdecoration"} to="/login">
    <div className="down">
-   <img className="home-corner" src={login} alt="icon" to="/login"width="300" height="300"/>
     Login
+   <img className="home-corner" src={login} alt="icon" to="/login"width="300" height="300"/>
     </div>
     </NavLink>  
     </div> 

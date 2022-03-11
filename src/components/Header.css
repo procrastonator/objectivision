@@ -34,3 +34,18 @@
     align-content: flex-start;
     flex-direction: row;
 }
+/* .move-right{
+    margin-left: 30px;
+} */
+.HomeText{
+    color: #0dcaf0;
+    margin-left: 40px;
+    /* border: 1px solid wheat; */
+}
+.yellow{
+    /* color: #ffc107; */
+    color: black;
+}
+.move-left{
+    margin-left: 5px;
+}
