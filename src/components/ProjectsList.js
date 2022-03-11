@@ -3,6 +3,7 @@ import begin from "./assets/ideas.jpeg"
 import "./ProjectList.css"
 import star from "./assets/star-outline.svg"
 import { useEffect } from "react";
+import list from "./assets/projectListPic.jpeg"
 
 export default function ProjectsList(props) {
   const { projectData } = props;
@@ -32,7 +33,12 @@ export default function ProjectsList(props) {
           </Link>
         </div>
       ) : (
-        <div>
+       
+        <div className="Contain">
+     
+        <img className="corners" src={list} alt="no pic" width="500" height="400" />
+        
+        <div className="boxing">
           {projectData.map((element, index) => {
             return (
               <div key={element._id}>
@@ -49,7 +55,9 @@ export default function ProjectsList(props) {
               </div>
             );
           })}
+          </div>
         </div>
+  
       )}
     </div>
   );

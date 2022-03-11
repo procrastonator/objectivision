@@ -17,3 +17,15 @@
 .star{
     margin-left: 5px;
 }
+.boxing{
+
+    display: flex;
+    flex-direction: column;
+}
+.Contain{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0px 280px;
+}

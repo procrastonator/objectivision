@@ -1,10 +1,10 @@
 .InProgress{
-    background-color: darkgoldenrod;
+    background-color: #ffc107;
     position:relative;
 }
 
 .Done{
-    background-color: lightgreen;
+    background-color: #198754;
     position: relative;
 }
 
@@ -13,9 +13,6 @@
     width: 50rem;
 }
 
-.ProjectDetails{
-    background-color: rgb(236, 236, 186);
-}
 .border{
     border-radius: 10%;
 }
