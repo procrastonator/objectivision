@@ -4,8 +4,7 @@ import { AuthContext } from "../context/auth.context"
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 // import { useNavigate } from 'react-router';
-import "./CreateProject.css"
-
+import "./CreateGoal.css"
 
 export default function CreateGoal(props) {
 
@@ -69,7 +68,7 @@ export default function CreateGoal(props) {
       </div>
 
       <div>
-        <textarea
+        <textarea rows="4" cols="50"
           type="text"
           name="description"
           value={description}
@@ -87,10 +86,10 @@ export default function CreateGoal(props) {
           onChange={(e) => setLink(e.target.value)}
         />
         </div>
-      <div>
-        <button type="submit">Add Goal</button>
-        <button onClick={goBack}>Back</button>
-      </div>
+      
+        <button type="submit" className='btn btn-secondary addGoal4'>Add Goal</button>
+        <button onClick={goBack} className="btn btn-dark backButton4">Back</button>
+      
       </form>
     
 

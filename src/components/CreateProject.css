@@ -7,3 +7,10 @@
     display: block;
     margin: 0.5rem auto;
 }
+
+.theSubmitbutton {
+    margin-left: 70px;
+}
+.bButton {
+    margin-left: 10px;
+}

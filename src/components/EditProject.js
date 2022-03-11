@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
+import "./EditProject.css"
 
 
 export default function EditProject(props) {
@@ -68,26 +69,34 @@ export default function EditProject(props) {
 
   return (
     <div>
-    
-    EditProject
+    <h3>EditProject</h3>
     <form onSubmit={handleFormSubmit}>
+      <div className='setTitle'>
+      <div>
         <label>Title:</label>
+      </div>
         <input
           type="text"
           name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        
+      </div>
+      <div className='setDescription'>
+        <div>
         <label>Description:</label>
-        <input
+        </div>
+        <textarea rows="4" cols="50"
           name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-
+        </div>
+        <div className='setPicture'>
+        <div></div>
         <label>
-          Picture: (add url)
+          Picture (add url): 
+          <br/>
           <input
             type="text"
             name="image"
@@ -95,13 +104,16 @@ export default function EditProject(props) {
             onChange={(e) => setImage(e.target.value)}
           />
         </label>
-        
-
-        <input type="submit" value="Submit" />
+        </div>
+      <div className='submit'>
+        <button type="submit" value="Submit" className='btn btn-success'>Submit</button>
+      </div>
       </form>
 
-      <button onClick={goBack}>Back</button>
-      <button onClick={deleteProject}>Delete Project</button>
+     
+      <button className='deleteProject btn btn-danger' onClick={deleteProject}>Delete Project</button>
+      <button className='back btn btn-dark' onClick={goBack}>Back</button>
+      
      
     
     </div>

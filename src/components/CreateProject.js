@@ -78,10 +78,11 @@ export default function CreateProject(props) {
           />
         </label>
 
-        <button type="submit">Submit</button>
+        <button className="btn btn-success theSubmitbutton" type="submit">Submit</button>
+        <button className="btn btn-dark bButton" onClick={goBack}>Back</button>
       </form>
 
-      <button onClick={goBack}>Back</button>
+      
     </div>
   )
 }
