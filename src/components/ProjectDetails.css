@@ -1,10 +1,10 @@
 .InProgress{
-    background-color: yellow;
+    background-color: darkgoldenrod;
     position:relative;
 }
 
 .Done{
-    background-color: green;
+    background-color: lightgreen;
     position: relative;
 }
 
