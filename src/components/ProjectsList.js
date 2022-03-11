@@ -1,17 +1,27 @@
 import { Link } from "react-router-dom";
 import begin from "./assets/ideas.jpeg"
 import "./ProjectList.css"
+import star from "./assets/star-outline.svg"
+import { useEffect } from "react";
 
 export default function ProjectsList(props) {
   const { projectData } = props;
+  const {updateProjects} = props
 
   // console.log(props)
+  useEffect(()=>{
+    updateProjects()
+  }, [])
 
+ 
+  if (!projectData){
+    return <h1>Loading...</h1>
+  }
   return (
     <div>
       {projectData.length === 0 ? (
         <div className="Box">
-          <h3>I see you have no project. Wy don't we get started on a </h3>
+          <h3>I see you have no project. Why don't we get started on a </h3>
           <img className="corners" src={begin} alt="no pic" width="300" height="300" />
           <Link
             className=" btn btn-success button"
@@ -28,10 +38,14 @@ export default function ProjectsList(props) {
               <div key={element._id}>
                 <br />
                 <section className="project-summary">
-                  <Link to={`/projects/${element._id}`}>{element.title}</Link>
-                  <p>{element.goals.length}</p>
+                
+                  <Link className="btn btn-warning" to={`/projects/${element._id}`}>{element.title}
+                  <img className="star" src={star} alt="no star" width="20" height="20" />
+                  </Link>
+                  
+                  <p> This project has  {element.goals.length} goals </p>
                 </section>
-                <hr />
+             
               </div>
             );
           })}
