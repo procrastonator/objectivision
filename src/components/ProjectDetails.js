@@ -91,7 +91,7 @@ export default function ProjectDetails(props) {
 
       <h2>{projectDetails.title}</h2>
       {projectDetails.image
-        ? <img src={projectDetails.image} alt="pictur" width="200" height="200" />
+        ? <img className={"border"} src={projectDetails.image} alt="pictur" width="200" height="200" />
         : <img src={noImage} alt="no pic" width="200" height="200" />}
 
       <h4>Description:</h4>

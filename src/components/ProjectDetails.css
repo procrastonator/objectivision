@@ -16,4 +16,7 @@
 .ProjectDetails{
     background-color: rgb(236, 236, 186);
 }
+.border{
+    border-radius: 10%;
+}
 

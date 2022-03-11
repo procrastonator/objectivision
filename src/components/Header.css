@@ -6,11 +6,13 @@
   background-size: cover;
   color: aliceblue;
   /* background-color: burlywood; */
+  border-bottom: 7px solid burlywood;
 }
 .contain{
     display: flex;
 }
 .position{
+    
     display: flex;
 }
 .navigate{
@@ -19,7 +21,13 @@
 .box{
    display: flex;
 }
-
+.logout{
+    
+    display: flex;
+}
+.spacing{
+    padding: 0px 30px;
+}
 .buttons{
     display: flex;
     justify-content: space-around;

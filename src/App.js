@@ -58,7 +58,7 @@ function App() {
 
         <Route path="/projects" element={ 
       <IsPrivate>
-        <ProjectsList  projectData={userProjects} /> 
+        <ProjectsList  updateProjects={fetchProjects} projectData={userProjects} /> 
       </IsPrivate>
         } />
         

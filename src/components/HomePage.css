@@ -21,7 +21,7 @@ height: 700px;
     padding-bottom: 60px;
 }
 .center{
- padding: 200px;
+ padding: 130px;
 }
 .Welkome{
     border: solid 1px rgb(224, 172, 2);
@@ -32,10 +32,10 @@ height: 700px;
     display: flex;
 }
 .borders{
-    border-radius: 50%;
+    border-radius: 50% !important;
 }
 .colum{
-    margin: 30px 130px;
+    margin: 30px 140px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -48,7 +48,7 @@ height: 700px;
     padding: 40px;
     opacity: 0.8;
     border-radius:80px ;
-    color: rgb(235, 229, 229);
+    color: rgb(39, 37, 37);
   }
   .space{
       padding: 25px 0px !important;

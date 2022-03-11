@@ -2,12 +2,21 @@ import { Link } from "react-router-dom";
 import begin from "./assets/ideas.jpeg"
 import "./ProjectList.css"
 import star from "./assets/star-outline.svg"
+import { useEffect } from "react";
 
 export default function ProjectsList(props) {
   const { projectData } = props;
+  const {updateProjects} = props
 
   // console.log(props)
+  useEffect(()=>{
+    updateProjects()
+  }, [])
 
+ 
+  if (!projectData){
+    return <h1>Loading...</h1>
+  }
   return (
     <div>
       {projectData.length === 0 ? (

@@ -19,9 +19,10 @@ export default function Header() {
           </NavLink>
 
           <div className>
-            <ul className="">
+            <ul className="box">
               {isLoggedIn && (
                 <>
+                <div className="spacing">
                   <NavLink
                     className=" btn btn-outline-warning "
                     aria-current="page"
@@ -29,6 +30,8 @@ export default function Header() {
                   >
                     Projects
                   </NavLink>
+                  </div>
+                  <div className="spacing">
                   <NavLink
                     className=" btn btn-outline-warning "
                     aria-current="page"
@@ -36,10 +39,12 @@ export default function Header() {
                   >
                     New Project
                   </NavLink>
-                  &nbsp;
+                  </div>
+                  <div className="spacing">
                   <button className="btn btn-outline-warning" onClick={logOutUser} to="/">
                     Logout
                   </button>
+                  </div>
                 </>
               )}
               {/* 
@@ -52,6 +57,8 @@ export default function Header() {
 
               {!isLoggedIn && (
                 <>
+                <div className="logout">
+                <div className="spacing">
                   <NavLink
                     className="position btn btn-outline-warning"
                     aria-current="page"
@@ -59,6 +66,8 @@ export default function Header() {
                   >
                     Register
                   </NavLink>
+                  </div>
+                  <div>
                   <NavLink
                     className="position btn btn-outline-warning"
                     aria-current="page"
@@ -66,6 +75,8 @@ export default function Header() {
                   >
                     Login
                   </NavLink>
+                  </div>
+                  </div> 
                 </>
               )}
             </ul>
