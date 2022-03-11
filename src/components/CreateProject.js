@@ -59,7 +59,7 @@ export default function CreateProject(props) {
           />
         </label>
         <label>
-          Picture: (add url)
+          Picture: (add picture link)
           <input
             type="text"
             name="image"

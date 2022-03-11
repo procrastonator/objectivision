@@ -22,7 +22,7 @@ export default function ProjectsList(props) {
     <div>
       {projectData.length === 0 ? (
         <div className="Box">
-          <h3>I see you have no project. Why don't we get started on a </h3>
+          <h3>I see you have no project. Why don't we get started on a new Project?</h3>
           <img className="corners" src={begin} alt="no pic" width="300" height="300" />
           <Link
             className=" btn btn-success button"

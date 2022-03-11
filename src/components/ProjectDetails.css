@@ -24,6 +24,9 @@
 .btn-warning {
     margin-right: 10px;
 }
+.space-btn{
+    margin-right: 10px;
+}
 
 .buttonNew {
     margin-right: 0px;
@@ -42,5 +45,8 @@
      margin-right: 80px;
      margin-left: 5px;
      margin-top: 9px;
+ }
+ .black-border{
+     border: 1px solid black;
  }
 

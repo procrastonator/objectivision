@@ -40,7 +40,7 @@ export default function HomePage(props) {
     <div > 
     <NavLink to="/signup">
     <div className="down">
-    <img src={Register} alt="icon" width="300" height="300" />
+    <img className="home-corner" src={Register} alt="icon" width="300" height="300" />
     Register
     </div>
     </NavLink> 
@@ -49,7 +49,7 @@ export default function HomePage(props) {
    <div> 
    <NavLink to="/login">
    <div className="down">
-   <img src={login} alt="icon" to="/login"width="300" height="300"/>
+   <img className="home-corner" src={login} alt="icon" to="/login"width="300" height="300"/>
     Login
     </div>
     </NavLink>  

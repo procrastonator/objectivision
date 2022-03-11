@@ -114,9 +114,9 @@ export default function ProjectDetails(props) {
           <div class="col Size">
             <div class="p-3 border InProgress"><h3> In Progress: </h3>
               {inProgress.length === 0 ?<>
-                <p>Looks like you have no goals yet</p>
+                <p>Looks like you have no goals</p>
                 <Link to={`/projects/${projectId}/goal`}>
-                   <button className='btn btn-warning'>Add New Goal</button>
+                   <button className='btn btn-warning black-border'>Add New Goal</button>
                   </Link>
               </>
               
@@ -134,7 +134,7 @@ export default function ProjectDetails(props) {
                     </div>
 
                     <Link to={`/projects/${element._id}/update`}>
-                      <button className='btn btn-warning'>update Goal</button>
+                      <button className='btn btn-secondary space-btn'>update Goal</button>
                     </Link>
 
 
