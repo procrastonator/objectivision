@@ -46,7 +46,7 @@ export default function ProjectsList(props) {
                 <br />
                 <section className="project-summary">
                   <Link className="btn btn-warning" to={`/projects/${element._id}`}>{element.title}
-                  <img className="star" src={star} alt="no star" width="20" height="20" />
+                  
                   </Link>
                 {element.image
                 ? <img className={"border"} src={element.image} alt="pictur" width="70" height="70" />

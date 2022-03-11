@@ -70,12 +70,12 @@ export default function HomePage(props) {
     {/* <button>  <NavLink to={`/projects`}>I don't know what to do</NavLink> </button> */}
     <div className={""} >
      <div className={"space"} >
-    <NavLink to="/projects"><button className={"btn btn-warning down radius"} >
+    <NavLink className={"textdecoration"} to="/projects"><button className={"btn btn-warning down radius"} >
     <img src={project} alt="icon" width="150" height="150" />
     Cheak Your Projects</button></NavLink> 
     </div>
     <div className={"space"} >
-     <NavLink to="/projects/create" ><button className={"btn btn-warning down radius"} >
+     <NavLink className={"textdecoration"} to="/projects/create" ><button className={"btn btn-warning down radius"} >
      <img className={"borders"} src={newProject} alt="icon" width="150" height="150" />
      Start a new Project </button></NavLink> 
      </div>
