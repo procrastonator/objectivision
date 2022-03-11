@@ -5,6 +5,9 @@ import house from "./assets/home-logo-pin.webp";
 import logout from "./assets/log-out-outline.svg"
 import create from "./assets/create-outline.svg"
 import list from "./assets/list-outline.svg"
+import login from "./assets/log-in-outline.svg"
+import registrate from "./assets/trail-sign-outline.svg"
+
 
 import "./Header.css";
 
@@ -68,20 +71,22 @@ export default function Header() {
                 <div className="logout">
                 <div className="spacing">
                   <NavLink
-                    className="position btn btn-outline-warning"
+                    className="position btn btn-outline-warning yellow"
                     aria-current="page"
                     to="/signup"
                   >
                     Register
+                  <img className="move-left" src={registrate} alt="home Icon " width="20" height="20" />
                   </NavLink>
                   </div>
                   <div>
                   <NavLink
-                    className="position btn btn-outline-warning"
+                    className="position btn btn-outline-warning yellow"
                     aria-current="page"
                     to="/login"
                   >
                     Login
+                  <img className="move-left" src={login} alt="home Icon " width="20" height="20" />
                   </NavLink>
                   </div>
                   </div> 
